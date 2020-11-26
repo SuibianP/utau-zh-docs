@@ -1,0 +1,11 @@
+{% extends "main.html" %}
+{% block content %}
+
+<script>
+	var main_panel = document.getElementsByClassName('md-main')[0];
+	main_panel.style.backgroundRepeat = "no-repeat";
+	main_panel.style.backgroundSize = "contain";
+	main_panel.style.backgroundPosition = "center center";
+	main_panel.style.backgroundImage = "url('images/404-image.png')";
+</script>
+{% endblock %}
