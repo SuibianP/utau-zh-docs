@@ -23,3 +23,7 @@
 6. merge完了之后自己账户上fork的repo就可以删了（当然不删也行）
 
 **有经验而且可能想长期贡献的可以直接要我加collaborator**
+
+## 注意
+
+所有贡献需要与本项目一并在[知识共享许可协议—署名—相同方式共享 4.0 协议国际版](https://creativecommons.org/licenses/by-sa/4.0/legalcode.zh-Hans)或其他兼容协议下发布。
