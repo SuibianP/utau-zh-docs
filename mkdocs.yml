@@ -8,13 +8,13 @@ nav:
                 - 'CONTRIBUTORS.md'
                 - 'CONTRIBUTING.md'
         - 文档:
-                - 'docs/SHIRO-readme.md'
-                - 'docs/presamp-ini-spec.md'
-                - 'docs/UTAU-plugin-dev.md'
-                - 'docs/setParam-plugin-dev.md'
-                - 'docs/rentan-info.md'
-                - 'docs/doppeltler_readme_zh.md'
-                - 'docs/UTAU-english-phoneme-list.md'
+                - 'docs/SHIRO-readme/SHIRO-readme.md/'
+                - 'docs/presamp-ini-spec/presamp-ini-spec.md/'
+                - 'docs/UTAU-plugin-dev/UTAU-plugin-dev.md/'
+                - 'docs/setParam-plugin-dev/setParam-plugin-dev.md/'
+                - 'docs/rentan-info/rentan-info.md/'
+                - 'docs/doppeltler_readme_zh/doppeltler_readme_zh.md/'
+                - 'docs/UTAU-english-phoneme-list/UTAU-english-phoneme-list.md/'
 
 theme:
         name: 'material'
