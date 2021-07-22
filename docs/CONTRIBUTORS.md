@@ -10,6 +10,8 @@
 
 - [Rye-Catcher](https://github.com/Rye-Catcher)
 
+- [SineStriker](https://github.com/SineStriker)
+
 大部分是我翻译之后找数字校对的，不过presamp.ini文档可以直接当数字翻译的了（屑，隋卞，屑）
 
 ## 借用项目
