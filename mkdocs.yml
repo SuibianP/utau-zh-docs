@@ -17,6 +17,7 @@ nav:
                 - 'docs/UTAU-english-phoneme-list/UTAU-english-phoneme-list.md/'
                 - 'docs/原音设定1_oto条目到底包含了什么/原音设定1.md'
                 - 'docs/UTAU-batchfile-analyze/UTAU-batchfile-analyze.md'
+                - 'docs/fuck-utau/fuck-utau.md'
 
 theme:
         name: 'material'
