@@ -18,6 +18,7 @@ nav:
                 - 'docs/原音设定1_oto条目到底包含了什么/原音设定1.md'
                 - 'docs/UTAU-batchfile-analyze/UTAU-batchfile-analyze.md'
                 - 'docs/fuck-utau/fuck-utau.md'
+                - 'docs/utau_pitch_string/utau-pitch-analysis.md'
 
 theme:
         name: 'material'
