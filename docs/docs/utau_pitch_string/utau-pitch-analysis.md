@@ -88,7 +88,6 @@
 
 我写了一个简单的Python脚本，用`matplotlib`得到的结果：  
 
-![convert_pitch](figure_1.svg)
 <img src="figure_1.svg">
 
 ## 尾声
