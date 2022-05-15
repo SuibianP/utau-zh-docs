@@ -42,7 +42,7 @@ plugins:
         - git-revision-date-localized:
                 type: timeago
                 time_zone: Asia/Shanghai
-                locale: zh_CN # cannot follow the default lang
+                locale: zh # cannot follow the default lang
                 fallback_to_build_date: true
         - search:
                 lang: # no zh, workaround
