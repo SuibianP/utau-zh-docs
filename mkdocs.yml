@@ -18,7 +18,6 @@ nav:
                 - 'docs/原音设定1_oto条目到底包含了什么/原音设定1.md'
                 - 'docs/UTAU-batchfile-analyze/UTAU-batchfile-analyze.md'
                 - 'docs/fuck-utau/fuck-utau.md'
-                - 'docs/utau_pitch_string/utau-pitch-analysis.md'
 
 theme:
         name: 'material'
@@ -43,7 +42,7 @@ plugins:
         - git-revision-date-localized:
                 type: timeago
                 time_zone: Asia/Shanghai
-                locale: zh_CN # cannot follow the default lang
+                locale: zh # cannot follow the default lang
                 fallback_to_build_date: true
         - search:
                 lang: # no zh, workaround
