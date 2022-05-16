@@ -88,7 +88,7 @@
 
 我写了一个简单的Python脚本，用`matplotlib`得到的结果：  
 
-<img src="figure_1.svg">
+![Figure 1](figure_1.svg)
 
 ## 尾声
 不过对于Pitch数值的单位，如何转换成偏移的频率还没有研究。  
