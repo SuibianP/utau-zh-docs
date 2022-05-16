@@ -12,6 +12,8 @@
 
 - [SineStriker](https://github.com/SineStriker)
 
+- [狼大](https://github.com/ookamitai)
+
 - 及各文档的原作者们
 
 大部分是我翻译之后找数字校对的，不过presamp.ini文档可以直接当数字翻译的了（屑，隋卞，屑）
