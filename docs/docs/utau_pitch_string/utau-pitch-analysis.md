@@ -25,6 +25,7 @@
 对于UTAU传到resampler的参数里面，有一条就是Pitch字符串。
 
 ` @"%resamp%"%1 %temp% %2 %vel% %flag% %5 %6 %7 %8 %params% `
+
 > 启动重采样引擎
 
 `%params%` 里面有
@@ -41,6 +42,7 @@
 （是的我知道这个很长）  
 
 我们先以`#`字符为分割线进行分割。  
+>  
 + `T6o7B7b718M8g8u82828w8k8S757U6j5s4x31262B1K0YzqzAycx/xnxVxMxTx2ywz81X254d577O8O859M9N9O9Q9T9W9Z9c9f9h9i9i9g9a9Q9D818m8Y8N8E7/7/8J8d869c+C+n/J/k/3//AA`
 + `#14#`
 + `/8/h+v9s8e7O6D5G4d4M`
