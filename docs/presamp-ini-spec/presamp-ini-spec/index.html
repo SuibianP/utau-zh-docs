@@ -1,0 +1,1568 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="UTAU相关各种文档的简体中文翻译堆积处。">
+      
+      
+        <meta name="author" content="隋卞">
+      
+      
+      <link rel="icon" href="../../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>presamp.ini说明文件 - utau-zh-docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#presamp-ini-ShuoMing-WenJian" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+<a href="https://github.com/SuibianP/utau-zh-docs/issues/new" target="_blank">issue</a>大欢迎！<a href="https://github.com/SuibianP/utau-zh-docs/compare" target="_blank">pull request</a>大欢迎！乌拉！
+
+          </div>
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="utau-zh-docs" class="md-header__button md-logo" aria-label="utau-zh-docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.ico" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            utau-zh-docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              presamp.ini说明文件
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SuibianP/utau-zh-docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SuibianP/utau-zh-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        首页
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../SHIRO-readme/SHIRO-readme/" class="md-tabs__link md-tabs__link--active">
+        文档
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="utau-zh-docs" class="md-nav__button md-logo" aria-label="utau-zh-docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.ico" alt="logo">
+
+    </a>
+    utau-zh-docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SuibianP/utau-zh-docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SuibianP/utau-zh-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          首页
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="首页" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          首页
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        文档列表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTORS/" class="md-nav__link">
+        鸣谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTING/" class="md-nav__link">
+        帮帮我！【雾
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          文档
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="文档" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          文档
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SHIRO-readme/SHIRO-readme/" class="md-nav__link">
+        SHIRO自述文档
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          presamp.ini说明文件
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        presamp.ini说明文件
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ZhuYiShiXiang" class="md-nav__link">
+    注意事项
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BanBen-ShiYongFanWei" class="md-nav__link">
+    版本适用范围
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#CunFang-LuJing" class="md-nav__link">
+    存放路径
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#GeShi" class="md-nav__link">
+    格式
+  </a>
+  
+    <nav class="md-nav" aria-label="格式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#VERSION" class="md-nav__link">
+    [VERSION]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#LOCALE" class="md-nav__link">
+    [LOCALE]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#RESAMP" class="md-nav__link">
+    [RESAMP]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#TOOL" class="md-nav__link">
+    [TOOL]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VOWEL" class="md-nav__link">
+    [VOWEL]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#CONSONANT" class="md-nav__link">
+    [CONSONANT]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#PRIORITY" class="md-nav__link">
+    [PRIORITY]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#REPLACE" class="md-nav__link">
+    [REPLACE]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ALIAS" class="md-nav__link">
+    [ALIAS]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#PRE" class="md-nav__link">
+    [PRE]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#SU" class="md-nav__link">
+    [SU]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#NUM-APPEND-PITCH" class="md-nav__link">
+    [NUM]、[APPEND]、[PITCH]
+  </a>
+  
+    <nav class="md-nav" aria-label="[NUM]、[APPEND]、[PITCH]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#UNDERBAR" class="md-nav__link">
+    @UNDERBAR@
+  </a>
+  
+    <nav class="md-nav" aria-label="@UNDERBAR@">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Wu-UNDERBAR-De-QingKuang" class="md-nav__link">
+    无@UNDERBAR@的情况
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#You-UNDERBAR-De-QingKuang" class="md-nav__link">
+    有@UNDERBAR@的情况
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#NOREPEAT" class="md-nav__link">
+    @NOREPEAT@
+  </a>
+  
+    <nav class="md-nav" aria-label="@NOREPEAT@">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Wu-NOREPEAT-De-QingKuang" class="md-nav__link">
+    无@NOREPEAT@的情况
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#You-NOREPEAT-De-QingKuang" class="md-nav__link">
+    有@NOREPEAT@的情况
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ALIAS-PRIORITY-ALIAS-PRIORITY-DIFAPPEND-ALIAS-PRIORITY-DIFPITCH" class="md-nav__link">
+    [ALIAS_PRIORITY][ALIAS_PRIORITY_DIFAPPEND][ALIAS_PRIORITY_DIFPITCH]]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#SPLIT" class="md-nav__link">
+    [SPLIT]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MUSTVC" class="md-nav__link">
+    [MUSTVC]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#CFLAGS" class="md-nav__link">
+    [CFLAGS]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VCLENGTH" class="md-nav__link">
+    [VCLENGTH]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ENDTYPE1-ENDTYPE2" class="md-nav__link">
+    [ENDTYPE1][ENDTYPE2]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ENDTYPE" class="md-nav__link">
+    [ENDTYPE]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ENDFLAG" class="md-nav__link">
+    [ENDFLAG]
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UTAU-plugin-dev/UTAU-plugin-dev/" class="md-nav__link">
+        UTAU插件开发方法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setParam-plugin-dev/setParam-plugin-dev/" class="md-nav__link">
+        关于setParam插件的开发方法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rentan-info/rentan-info/" class="md-nav__link">
+        整体录制单独音（连单风单独音）的解说
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../doppeltler_readme_zh/doppeltler_readme_zh/" class="md-nav__link">
+        doppeltler自述文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UTAU-english-phoneme-list/UTAU-english-phoneme-list/" class="md-nav__link">
+        UTAU英语音源音素对应表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1_oto%E6%9D%A1%E7%9B%AE%E5%88%B0%E5%BA%95%E5%8C%85%E5%90%AB%E4%BA%86%E4%BB%80%E4%B9%88/%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1/" class="md-nav__link">
+        闪闪的原音设定碎碎念1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UTAU-batchfile-analyze/UTAU-batchfile-analyze/" class="md-nav__link">
+        UTAU 渲染脚本
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fuck-utau/fuck-utau/" class="md-nav__link">
+        【吐槽向】论UTAU设计之烂
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utau_pitch_string/utau-pitch-analysis/" class="md-nav__link">
+        UTAU Pitch字符串解码
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ZhuYiShiXiang" class="md-nav__link">
+    注意事项
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BanBen-ShiYongFanWei" class="md-nav__link">
+    版本适用范围
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#CunFang-LuJing" class="md-nav__link">
+    存放路径
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#GeShi" class="md-nav__link">
+    格式
+  </a>
+  
+    <nav class="md-nav" aria-label="格式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#VERSION" class="md-nav__link">
+    [VERSION]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#LOCALE" class="md-nav__link">
+    [LOCALE]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#RESAMP" class="md-nav__link">
+    [RESAMP]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#TOOL" class="md-nav__link">
+    [TOOL]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VOWEL" class="md-nav__link">
+    [VOWEL]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#CONSONANT" class="md-nav__link">
+    [CONSONANT]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#PRIORITY" class="md-nav__link">
+    [PRIORITY]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#REPLACE" class="md-nav__link">
+    [REPLACE]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ALIAS" class="md-nav__link">
+    [ALIAS]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#PRE" class="md-nav__link">
+    [PRE]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#SU" class="md-nav__link">
+    [SU]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#NUM-APPEND-PITCH" class="md-nav__link">
+    [NUM]、[APPEND]、[PITCH]
+  </a>
+  
+    <nav class="md-nav" aria-label="[NUM]、[APPEND]、[PITCH]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#UNDERBAR" class="md-nav__link">
+    @UNDERBAR@
+  </a>
+  
+    <nav class="md-nav" aria-label="@UNDERBAR@">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Wu-UNDERBAR-De-QingKuang" class="md-nav__link">
+    无@UNDERBAR@的情况
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#You-UNDERBAR-De-QingKuang" class="md-nav__link">
+    有@UNDERBAR@的情况
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#NOREPEAT" class="md-nav__link">
+    @NOREPEAT@
+  </a>
+  
+    <nav class="md-nav" aria-label="@NOREPEAT@">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Wu-NOREPEAT-De-QingKuang" class="md-nav__link">
+    无@NOREPEAT@的情况
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#You-NOREPEAT-De-QingKuang" class="md-nav__link">
+    有@NOREPEAT@的情况
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ALIAS-PRIORITY-ALIAS-PRIORITY-DIFAPPEND-ALIAS-PRIORITY-DIFPITCH" class="md-nav__link">
+    [ALIAS_PRIORITY][ALIAS_PRIORITY_DIFAPPEND][ALIAS_PRIORITY_DIFPITCH]]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#SPLIT" class="md-nav__link">
+    [SPLIT]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#MUSTVC" class="md-nav__link">
+    [MUSTVC]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#CFLAGS" class="md-nav__link">
+    [CFLAGS]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VCLENGTH" class="md-nav__link">
+    [VCLENGTH]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ENDTYPE1-ENDTYPE2" class="md-nav__link">
+    [ENDTYPE1][ENDTYPE2]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ENDTYPE" class="md-nav__link">
+    [ENDTYPE]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ENDFLAG" class="md-nav__link">
+    [ENDFLAG]
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/SuibianP/utau-zh-docs/edit/master/docs/docs/presamp-ini-spec/presamp-ini-spec.md" title="编辑此页" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="presamp-ini-ShuoMing-WenJian">presamp.ini说明文件<a class="headerlink" href="#presamp-ini-ShuoMing-WenJian" title="Permanent link">♬</a></h1>
+<p><a href="https://ch.nicovideo.jp/delta_kimigatame/blomaga/ar483589">原文链接（日语）</a> 作者：<a href="https://www.nicovideo.jp/user/17751382">デルタ</a></p>
+<hr />
+<h2 id="ZhuYiShiXiang">注意事项<a class="headerlink" href="#ZhuYiShiXiang" title="Permanent link">♬</a></h2>
+<p>因为用来编辑预设的编辑器还没有做，所以写了这篇面向“无论如何（都要自己搞presamp.ini）”的人的十分硬核的文档。</p>
+<p>哪怕是在正确照着本文档使用的情况下，也不保证没有bug。</p>
+<p>如果删除了presamp.ini的话，下次启动时程序将按照默认值重新生成一个。</p>
+<p>若文件里有空行的话会读取失败。（关于这一点，ver1.7中大概有所改善）</p>
+<h2 id="BanBen-ShiYongFanWei">版本适用范围<a class="headerlink" href="#BanBen-ShiYongFanWei" title="Permanent link">♬</a></h2>
+<ul>
+<li>
+<p>ver1.2:</p>
+<p>presamp ver 0.64起</p>
+<p>predit ver 1.20起</p>
+</li>
+<li>
+<p>ver1.3:</p>
+<p>presamp ver 0.830起</p>
+<p>predit ver1.30起</p>
+</li>
+<li>
+<p>ver1.4:</p>
+<p>presamp ver0.841起</p>
+<p>predit ver1.40起</p>
+</li>
+<li>
+<p>ver1.5:</p>
+<p>presamp ver0.850起</p>
+<p>predit ver1.50起</p>
+</li>
+<li>
+<p>ver1.5(面向英语音源做了扩展的版本，仅有音源侧预设):</p>
+<p>presamp ver0.865起</p>
+</li>
+<li>
+<p>ver1.6:</p>
+<p>presamp ver0.866起</p>
+<p>predit ver1.60起</p>
+</li>
+<li>
+<p>ver1.7:</p>
+<p>presamp ver0.890起</p>
+<p>predit ver1.70起</p>
+</li>
+</ul>
+<h2 id="CunFang-LuJing">存放路径<a class="headerlink" href="#CunFang-LuJing" title="Permanent link">♬</a></h2>
+<ul>
+<li>
+<p>～presamp ver 0.714为止</p>
+<p>%appdata%\UTAU\presamp\presamp.ini</p>
+</li>
+<li>
+<p>～presamp ver 0.801为止</p>
+<p>%appdata%\UTAU\presamp_DV\presamp.ini</p>
+</li>
+<li>
+<p>～presamp ver 0.845为止</p>
+<p>%appdata%\UTAU\presamp_DV08\presamp.ini</p>
+</li>
+<li>
+<p>～presamp ver 0.871为止</p>
+<p>%appdata%\UTAU\presamp_DV0850\presamp.ini</p>
+</li>
+<li>
+<p>目前版本</p>
+<p>%appdata%\UTAU\presamp_DV0890\presamp.ini</p>
+</li>
+</ul>
+<p>并且，如果在音源文件夹的根目录下（与prefix.map等在同一位置）放置presamp.ini的话，则可以对该音源独立设定某些设置项。</p>
+<h2 id="GeShi">格式<a class="headerlink" href="#GeShi" title="Permanent link">♬</a></h2>
+<p>[条目]
+参数
+参数
+参数
+[条目]
+参数
+…</p>
+<p>这样按照顺序设定下去。</p>
+<h3 id="VERSION">[VERSION]<a class="headerlink" href="#VERSION" title="Permanent link">♬</a></h3>
+<p>默认值：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="mf">1.7</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>该项指定了本presamp.ini的版本。</p>
+<p>目前的可用值：<strong>1.2</strong>、<strong>1.3</strong>、<strong>1.4</strong>、<strong>1.5</strong>、<strong>1.6</strong>、<strong>1.7</strong>。</p>
+<p>0.830DV起为1.3
+0.841DV起为1.4
+0.850DV起为1.5
+0.866DV起为1.6
+0.890DV起为1.7。</p>
+<h3 id="LOCALE">[LOCALE]<a class="headerlink" href="#LOCALE" title="Permanent link">♬</a></h3>
+<p>默认值：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="mf">0</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>该项指定predit使用的语言。</p>
+<p><strong>0为日语，1为英语，2为韩语，3为繁体中文。</strong></p>
+<p>错误信息的话只有日语版本。
+有将来从外部文件读取语言设置的预定。</p>
+<h3 id="RESAMP">[RESAMP]<a class="headerlink" href="#RESAMP" title="Permanent link">♬</a></h3>
+<p>默认值是</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>C:\Program Files\UTAU\resampler.exe
+
+C:\Program Files\UTAU\resampler.exe
+</code></pre></div></td></tr></table></div>
+<p>指定重采样器(resampler)的绝对路径。</p>
+<p><strong>第1行是默认（没有flag时）被使用的标准引擎；</strong></p>
+<p><strong>第2行是用flag“/1”来使用的引擎；</strong></p>
+<p><strong>第3行是用flag“/2”来使用的引擎；</strong></p>
+<p><strong>…</strong></p>
+<p>请按照如上说明的方式进行设定。</p>
+<p>虽然没有仔细测试过，但理论上可以在之后追加任意多行。</p>
+<p>指定的exe不存在的情况下，将使用UTAU本体文件夹下的resampler.exe。</p>
+<p>文件中最多只指定到/2，ust文件中却设定了/4之类的flag的这种情况下，程序将使用标准引擎（第1行）。</p>
+<h3 id="TOOL">[TOOL]<a class="headerlink" href="#TOOL" title="Permanent link">♬</a></h3>
+<p>默认值：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">C</span><span class="p">:</span>\<span class="n">Program</span><span class="w"> </span><span class="n">Files</span>\<span class="n">UTAU</span>\<span class="n">wavtoolex</span><span class="o">.</span><span class="n">exe</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p><strong>该项指定wav结合器的绝对路径。</strong></p>
+<p>指定的exe不存在的情况下，将使用UTAU本体文件夹下的wavtool.exe。</p>
+<h3 id="VOWEL">[VOWEL]<a class="headerlink" href="#VOWEL" title="Permanent link">♬</a></h3>
+<p>默认值：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>a=あ=ぁ,あ,か,が,さ,ざ,た,だ,な,は,ば,ぱ,ま,ゃ,や,ら,わ,ァ,ア,カ,ガ,サ,ザ,タ,ダ,ナ,ハ,バ,パ,マ,ャ,ヤ,ラ,ワ=100
+e=え=ぇ,え,け,げ,せ,ぜ,て,で,ね,へ,べ,ぺ,め,れ,ゑ,ェ,エ,ケ,ゲ,セ,ゼ,テ,デ,ネ,ヘ,ベ,ペ,メ,レ,ヱ=100
+i=い=ぃ,い,き,ぎ,し,じ,ち,ぢ,に,ひ,び,ぴ,み,り,ゐ,ィ,イ,キ,ギ,シ,ジ,チ,ヂ,ニ,ヒ,ビ,ピ,ミ,リ,ヰ=100
+o=お=ぉ,お,こ,ご,そ,ぞ,と,ど,の,ほ,ぼ,ぽ,も,ょ,よ,ろ,を,ォ,オ,コ,ゴ,ソ,ゾ,ト,ド,ノ,ホ,ボ,ポ,モ,ョ,ヨ,ロ,ヲ=100
+n=ん=ん=100
+u=う=ぅ,う,く,ぐ,す,ず,つ,づ,ぬ,ふ,ぶ,ぷ,む,ゅ,ゆ,る,ゥ,ウ,ク,グ,ス,ズ,ツ,ヅ,ヌ,フ,ブ,プ,ム,ュ,ユ,ル,ヴ=100
+N=ン=ン=100
+</code></pre></div></td></tr></table></div>
+<p>该项是关于元音的设定。</p>
+<p>该设置项可以在音源侧的presamp.ini中进行设定。</p>
+<p>格式是，</p>
+<p><strong>v=V=CV,CV,CV…=vol</strong></p>
+<p>在前一音符末尾含有上述CV时，其后的VC或者VCV音符的歌词中的前面的元音部分会使用指定的v。</p>
+<p>CV目前限定为1字符。<sup id="fnref:VowelCVOne"><a class="footnote-ref" href="#fn:VowelCVOne">1</a></sup></p>
+<p style="color: grey">V是为了调用长采样或语尾息而设计的参数，现在暂未被使用。</p>
+
+<p style="color: grey">是为了在歌词为「a あ息R」「あー」这样的形式时，程序能够写出其中「あ」而设置。</p>
+
+<p style="color: grey">vol是想要做出根据音量的倍率对每一母音施加音量变化的功能而加入的参数，现在暂未被使用。</p>
+
+<h3 id="CONSONANT">[CONSONANT]<a class="headerlink" href="#CONSONANT" title="Permanent link">♬</a></h3>
+<p>默认值：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code>ch=ch,ち,ちぇ,ちゃ,ちゅ,ちょ=1
+gy=gy,ぎ,ぎぇ,ぎゃ,ぎゅ,ぎょ=1
+ts=ts,つ,つぁ,つぃ,つぇ,つぉ=1
+ty=ty,てぃ,てぇ,てゃ,てゅ,てょ=1
+py=py,ぴ,ぴぇ,ぴゃ,ぴゅ,ぴょ=1
+ry=ry,り,りぇ,りゃ,りゅ,りょ=1
+ny=ny,に,にぇ,にゃ,にゅ,にょ=0
+r=r,ら,る,れ,ろ=1
+hy=hy,ひ,ひぇ,ひゃ,ひゅ,ひょ=0
+dy=dy,でぃ,でぇ,でゃ,でゅ,でょ=1
+by=by,び,びぇ,びゃ,びゅ,びょ=1
+b=b,ば,ぶ,べ,ぼ=1
+d=d,だ,で,ど,どぅ=1
+g=g,が,ぐ,げ,ご=1
+f=f,ふ,ふぁ,ふぃ,ふぇ,ふぉ=0
+h=h,は,へ,ほ=0
+k=k,か,く,け,こ=1
+j=j,じ,じぇ,じゃ,じゅ,じょ=0
+m=m,ま,む,め,も=0
+n=n,な,ぬ,ね,の=0
+p=p,ぱ,ぷ,ぺ,ぽ=1
+s=s,さ,す,すぃ,せ,そ=0
+sh=sh,し,しぇ,しゃ,しゅ,しょ=0
+t=t,た,て,と,とぅ=1
+w=w,うぃ,うぅ,うぇ,うぉ,わ,を=0
+v=v,ヴ,ヴぁ,ヴぃ,ヴぅ,ヴぇ,ヴぉ=0
+y=y,いぃ,いぇ,や,ゆ,よ,ゐ,ゑ=0
+ky=ky,き,きぇ,きゃ,きゅ,きょ=1
+z=z,ざ,ず,ずぃ,ぜ,ぞ=0
+my=my,み,みぇ,みゃ,みゅ,みょ=0
+</code></pre></div></td></tr></table></div>
+<p>该项是关于辅音的设定。</p>
+<p>该设置项可以在音源侧的presamp.ini中进行设定。</p>
+<p>格式是</p>
+<p><strong>c=CV,CV,…=[crossfade flag]</strong>(=[VCLENGTH])</p>
+<p>在调用VC时，如果后面的音符歌词对应上述CV，则当前VC音符的辅音部分使用c。</p>
+<p>和对元音的设置中说明的不同，此处对CV的比较是完全匹配。</p>
+<p>请将[crossfade flag]设定为0或1。</p>
+<p>此处设定为1则意味着VC音符与CV音符不会进行交叉渐变。</p>
+<p>在“声音消失”或者“对爆破音进行交叉渐变”等“交叉渐变反而坏处比较大”的情况下，请将本设定设置为1。</p>
+<p><em>ver1.4起</em></p>
+<p>[VClength]写不写都可以。不写的情况下本项为0。</p>
+<p>本项为0时，程序会从CV部分的原音设定中取得VC部的长度，设定为1时则从VC部的原音设定中取得VC部长度。</p>
+<h3 id="PRIORITY">[PRIORITY]<a class="headerlink" href="#PRIORITY" title="Permanent link">♬</a></h3>
+<p>默认值：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>k,ky,g,gy,t,ty,d,dy,ch,ts,b,by,p,py,r,ry
+</code></pre></div></td></tr></table></div>
+<p>告知程序在连续音与CVVC原音设定项同时存在时，是否优先使用CVVC的设置。</p>
+<p>该设置项可以在音源侧的presamp.ini中进行设定。</p>
+<p>格式为</p>
+<p><strong>CV,CV,CV…</strong></p>
+<p>如果[あ][k]变换为[あ][a k]后，k的声音并没有被发出，则会希望将其变换为[あ][a k][k]。</p>
+<p>本设置项是在类似上述的状况下使用的。</p>
+<p>此处CV需要完全一致才能匹配。</p>
+<p>因为不能变换成连续音，在无法CVVC化的情况下会以单独音输出。</p>
+<p>在作为音源侧设定时，可以用该设定来迂回解决连续音部分出错的问题。但由于会对所有接在前面的元音应用该设置，所以对该设置的使用有些微妙。</p>
+<p>例子：如果为了迂回解决[o も]出错的问题，[も]被设定在本项中，那么[a も]也会被程序试着CVVC化（若无[a m]则会被单独音化）</p>
+<h3 id="REPLACE">[REPLACE]<a class="headerlink" href="#REPLACE" title="Permanent link">♬</a></h3>
+<p>默认值：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>由于很多所以省略。
+
+(是将罗马字变换为平假名，[を]变换为[お]的规则。)
+</code></pre></div></td></tr></table></div>
+<p>该项是指定程序以何种规则进行歌词替换。</p>
+<p>该设置项可以在音源侧的presamp.ini中进行设定。</p>
+<p>格式为</p>
+<p><strong>CV1=CV2</strong></p>
+<p>使用时，程序会把CV1替换为CV2。</p>
+<p>使用歌词为罗马音的ust；方便海外用户使用；防止漏录的音素缺音；对类似<a href="https://dic.nicovideo.jp/a/%E3%83%9B%E3%83%A2%E3%81%8F%E3%82%8C%E9%9F%B3%E6%BA%90">ホモくれ</a>的音源进行音符变换（可以作为歌词元音化插件的替代）。</p>
+<p>该设置项可以用于这些情况。</p>
+<h3 id="ALIAS">[ALIAS]<a class="headerlink" href="#ALIAS" title="Permanent link">♬</a></h3>
+<p>默认值：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">VCV</span><span class="o">=</span><span class="err">%</span><span class="n">v</span><span class="err">%%</span><span class="n">VCVPAD</span><span class="err">%%</span><span class="n">CV</span><span class="err">%</span>
+<span class="n">BEGINING_CV</span><span class="o">=-</span><span class="err">%</span><span class="n">VCVPAD</span><span class="err">%%</span><span class="n">CV</span><span class="err">%</span>
+<span class="n">CROSS_CV</span><span class="o">=*</span><span class="err">%</span><span class="n">VCVPAD</span><span class="err">%%</span><span class="n">CV</span><span class="err">%</span>
+<span class="n">VC</span><span class="o">=</span><span class="err">%</span><span class="n">v</span><span class="err">%%</span><span class="n">vcpad</span><span class="err">%%</span><span class="n">c</span><span class="err">%</span><span class="p">,</span><span class="err">%</span><span class="n">c</span><span class="err">%%</span><span class="n">vcpad</span><span class="err">%%</span><span class="n">c</span><span class="err">%</span>
+<span class="n">CV</span><span class="o">=</span><span class="err">%</span><span class="n">CV</span><span class="err">%</span><span class="p">,</span><span class="err">%</span><span class="n">c</span><span class="err">%%</span><span class="n">V</span><span class="err">%</span>
+<span class="n">C</span><span class="o">=</span><span class="err">%</span><span class="n">c</span><span class="err">%</span>
+<span class="n">LONG_V</span><span class="o">=</span><span class="err">%</span><span class="n">V</span><span class="err">%ー</span>
+<span class="n">VCPAD</span><span class="o">=</span>
+<span class="n">VCVPAD</span><span class="o">=</span>
+<span class="n">ENDING1</span><span class="o">=</span><span class="err">%</span><span class="n">v</span><span class="err">%%</span><span class="n">VCPAD</span><span class="err">%</span><span class="n">R</span>
+<span class="n">ENDING2</span><span class="o">=-</span>
+</code></pre></div></td></tr></table></div>
+<p>版本 ver1.5 起该设置项存在，<span style="text-decoration: line-through; color: red">但目前还不被使用。</span></p>
+<p>版本 ver1.7 中已支持该设置项。</p>
+<p>该项设置指定不同情况下各别名的格式。</p>
+<p>程序将从[VOWEL]段中获取%v%,%V%，从[CONSONANT]段中获取%c%,%CV%。</p>
+<p>该项设置中对于 VCPAD,ENDING1,ENDING2 的设定，如果已经在后述的[VCPAD][ENDTYPE1][ENDTYPE2]中设置过了，那么在那边的设置会被优先考虑。</p>
+<p>该设置项可以在音源侧的presamp.ini中进行设定。</p>
+<h3 id="PRE">[PRE]<a class="headerlink" href="#PRE" title="Permanent link">♬</a></h3>
+<p>默认值：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>（空）
+</code></pre></div></td></tr></table></div>
+<p><strong>格式</strong></p>
+<p>prefix1
+prefix2
+…</p>
+<p>该项设置自 版本 ver1.5 起可用。</p>
+<p>是为了解析类似[A3あ]带有前缀的别名的原音设定条目而设的设置项。
+请在每一行分别指定一种前缀。</p>
+<p>该设置项可以在音源侧的presamp.ini中进行设定。</p>
+<h3 id="SU">[SU]<a class="headerlink" href="#SU" title="Permanent link">♬</a></h3>
+<p>默认值：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nf">%num</span><span class="o">%</span><span class="nf">%append</span><span class="o">%</span><span class="nf">%pitch</span><span class="o">%</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>
+<p><em>重复字符：%num%(如[あ2]中的2)</em></p>
+</li>
+<li>
+<p><em>追加音源名：%append%(如[あ強]中的強)</em></p>
+</li>
+<li>
+<p><em>音高名：%pitch%(如[あG4]中的G4)</em></p>
+</li>
+</ul>
+<p>指定解析上述文本时的顺序。</p>
+<p>该项设置自 版本 ver1.5 起可用。</p>
+<p>目前版本中，<strong>输出的别名固定为默认顺序</strong>。请等待之后的更新。</p>
+<p>该设置项可以在音源侧的presamp.ini中进行设定。</p>
+<h3 id="NUM-APPEND-PITCH">[NUM]、[APPEND]、[PITCH]<a class="headerlink" href="#NUM-APPEND-PITCH" title="Permanent link">♬</a></h3>
+<p>该项设置自 版本 ver1.5 起可用。</p>
+<p>在解析中，以上设置分别指定重复序号、append名和音高名称的可能范围。</p>
+<p><strong>特殊命令:</strong></p>
+<h4 id="UNDERBAR">@UNDERBAR@<a class="headerlink" href="#UNDERBAR" title="Permanent link">♬</a></h4>
+<p>被该命令修饰的别名在匹配时将包含前面（如果有）的下划线。</p>
+<h5 id="Wu-UNDERBAR-De-QingKuang">无@UNDERBAR@的情况<a class="headerlink" href="#Wu-UNDERBAR-De-QingKuang" title="Permanent link">♬</a></h5>
+<p>[あ_G4]→匹配其中的G4</p>
+<h5 id="You-UNDERBAR-De-QingKuang">有@UNDERBAR@的情况<a class="headerlink" href="#You-UNDERBAR-De-QingKuang" title="Permanent link">♬</a></h5>
+<p>[あ_G4]→匹配其中的_G4</p>
+<h4 id="NOREPEAT">@NOREPEAT@<a class="headerlink" href="#NOREPEAT" title="Permanent link">♬</a></h4>
+<p>被该命令修饰的别名在匹配时不会允许重复。</p>
+<h5 id="Wu-NOREPEAT-De-QingKuang">无@NOREPEAT@的情况<a class="headerlink" href="#Wu-NOREPEAT-De-QingKuang" title="Permanent link">♬</a></h5>
+<p>[あ22]→匹配其中的22</p>
+<h5 id="You-NOREPEAT-De-QingKuang">有@NOREPEAT@的情况<a class="headerlink" href="#You-NOREPEAT-De-QingKuang" title="Permanent link">♬</a></h5>
+<p>[あ22]→匹配其中的2</p>
+<p>该设置项可以在音源侧的presamp.ini中进行设定。</p>
+<h3 id="ALIAS-PRIORITY-ALIAS-PRIORITY-DIFAPPEND-ALIAS-PRIORITY-DIFPITCH">[ALIAS_PRIORITY]<br/>[ALIAS_PRIORITY_DIFAPPEND]<br/>[ALIAS_PRIORITY_DIFPITCH]]<a class="headerlink" href="#ALIAS-PRIORITY-ALIAS-PRIORITY-DIFAPPEND-ALIAS-PRIORITY-DIFPITCH" title="Permanent link">♬</a></h3>
+<p><strong>preset ver1.7起可用。</strong></p>
+<p>分别通常，append名不同，同一append名音高不同时指定别名的优先顺序。</p>
+<p>默认值：\
+VCV\
+CVVC\
+CROSS_CV\
+CV\
+BEGINING_CV\</p>
+<p>但是append名不同，音高名不同为VCV与CVVC的顺序逆转。\
+关于各种别名分别的含义按[APPEND]的项目中指定的别名。</p>
+<p><strong>可以在音源侧预设设定</strong></p>
+<h3 id="SPLIT">[SPLIT]<a class="headerlink" href="#SPLIT" title="Permanent link">♬</a></h3>
+<p>默认值：1</p>
+<p><strong>可以在音源侧预设设定\
+preset ver1.5起可用</strong></p>
+<p>是关于音符自动分割功能的设定。\
+若设为0则变为不进行音符自动分割。</p>
+<h3 id="MUSTVC">[MUSTVC]<a class="headerlink" href="#MUSTVC" title="Permanent link">♬</a></h3>
+<p>默认值：0</p>
+<p><strong>可以在音源侧预设设定\
+preset ver1.6起可用</strong></p>
+<p>CVVC化时若CV的元音部分长度低于20ms，VC不生成（presamp说明）\
+若将此项目设为1，即使在CV极短的情况下仍然一定要生成VC。\
+此情况下的VC长不为原音长，而变为与CV长相同的长度。</p>
+<p>对英语或中文等含有双元音的音源库请设为1.</p>
+<h3 id="CFLAGS">[CFLAGS]<a class="headerlink" href="#CFLAGS" title="Permanent link">♬</a></h3>
+<p>默认值：p0</p>
+<p>单个辅音或双重辅音时自动付与flag。\
+<strong>可以在音源侧预设设定</strong></p>
+<p><strong>preset ver1.3起可用</strong>\
+若preset ver1.2中记述则presamp会崩溃</p>
+<p>辅音仅识别[consonant]c=CV,CV...=FLAG中指定的C的别名。</p>
+<h3 id="VCLENGTH">[VCLENGTH]<a class="headerlink" href="#VCLENGTH" title="Permanent link">♬</a></h3>
+<p>默认值：0</p>
+<p><strong>preset ver1.4起可用</strong>\
+若preset ver1.2中记述则presamp会崩溃</p>
+<p>选择取得CVVC的VC音符长的来源。\
+0的情况下为从CV的原音设定取得，\
+1的情况下为从VC的原音设定取得。</p>
+<p><strong>并且在此指定1的情况下，consonant下每一子音分别的vclength设定将被无视。</strong></p>
+<h3 id="ENDTYPE1-ENDTYPE2">[ENDTYPE1]<br/>[ENDTYPE2]<a class="headerlink" href="#ENDTYPE1-ENDTYPE2" title="Permanent link">♬</a></h3>
+<p>默认值：\
+无</p>
+<p>是语尾音素的格式设定。仅在[ENDFLAG]中指定3的情况下可用。\
+<strong>仅在ver1.5英语音源支持版的音源侧预设可以指定</strong></p>
+<p>转换休止符时的语尾音规则指定[ENDTYPE1]，\
+末尾补足别名时的语尾音规则指定[ENDTYPE2]。\
+格式与[ENDTYPE]相同。</p>
+<p><strong>ver1.7后与APPEND被统合，但作为向前兼容性被留下来。</strong></p>
+<h3 id="ENDTYPE">[ENDTYPE]<a class="headerlink" href="#ENDTYPE" title="Permanent link">♬</a></h3>
+<p>默认值：\
+%v% R</p>
+<p>是语尾音素的格式设定。\
+<strong>可以在音源侧预设指定</strong></p>
+<p><strong>preset ver1.3起可用</strong>\
+根据下述ENDFLAG的值改变行为。</p>
+<p><strong>ver1.7后与APPEND被统合，但作为向前兼容性被留下来。</strong>\
+%v%：a,i,u等等vowel中设定的原音\
+%V%：あ,い,う等等vowel中设定的代表CV\
+除此以外的字符预计会被不变输出。</p>
+<p>[VCPAD]
+默认值：</p>
+<p>（半角空格）</p>
+<p><strong>是可以在音源侧预设设定的项目。</strong></p>
+<p>因为好久之前收到了“CV是[ka]之类的那么VC也想[ak]这样输入！”的请求而实装的功能。\
+VC的格式写作\
+%v%%vcpad%%c%</p>
+<p>主要面向海外。\
+突然想把VC的别名命名为[a+k]之类的人也能使用了，但未经详细测试。</p>
+<p><strong>由于若有空格行presamp会崩溃所以现在完全用不上</strong></p>
+<p><strong>ver1.7后与APPEND被统合，但作为向前兼容性被留下来。</strong></p>
+<h3 id="ENDFLAG">[ENDFLAG]<a class="headerlink" href="#ENDFLAG" title="Permanent link">♬</a></h3>
+<p>默认值：
+1</p>
+<p>ver1.3起中默认值为0</p>
+<p><strong>ver1.3起可以使用</strong>\
+是是否自动使用语尾音素的设定。\
+<strong>是可以在音源侧预设设定的项目。</strong></p>
+<p>0为自动语尾音关闭</p>
+<p>1为休止符转换为语尾音的类型设定\
+ex)\
+音符为[あ][R]，endtype为%v% R的话\
+[あ]转换为[a R]</p>
+<p>2为语尾音符变化的类型设定\
+ex)\
+音符为[a k][R]，endtype为-的情况\
+转换为[a k-][R]</p>
+<p><strong>仅为ver1.5英语音源扩展版起的音源侧预设</strong>\
+若设定为3则自动判断使用1，2哪种行为。</p>
+<p>[BATNUM]\
+默认值：\
+16</p>
+<p>是presamp的高速化设定。\
+数字为1～CPU核心数的2倍</p>
+<p>无论指定多大的数字都被限制为核心数2倍。</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:VowelCVOne">
+<p>润色注：应用中此处的CV可以使用多个字符。&#160;<a class="footnote-backref" href="#fnref:VowelCVOne" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2022-05-18T00:55:50+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2022-05-18</span>
+      
+    
+  </small>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            隋卞 et al.，在<a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode.zh-Hans" target="_blank">知识共享许可协议—署名—相同方式共享 4.0 协议国际版</a>下发布
+          </div>
+        
+        使用
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+	部署
+      </div>
+      <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/SuibianP" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://qm.qq.com/cgi-bin/qm/qr?k=mJazCWZGab4flBhFeyEGVCwi6fD0eZMh&noverify=0" target="_blank" rel="noopener" title="qm.qq.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M433.754 420.445c-11.526 1.393-44.86-52.741-44.86-52.741 0 31.345-16.136 72.247-51.051 101.786 16.842 5.192 54.843 19.167 45.803 34.421-7.316 12.343-125.51 7.881-159.632 4.037-34.122 3.844-152.316 8.306-159.632-4.037-9.045-15.25 28.918-29.214 45.783-34.415-34.92-29.539-51.059-70.445-51.059-101.792 0 0-33.334 54.134-44.859 52.741-5.37-.65-12.424-29.644 9.347-99.704 10.261-33.024 21.995-60.478 40.144-105.779C60.683 98.063 108.982.006 224 0c113.737.006 163.156 96.133 160.264 214.963 18.118 45.223 29.912 72.85 40.144 105.778 21.768 70.06 14.716 99.053 9.346 99.704z"/></svg>
+    </a>
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs", "navigation.instant", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  </body>
+</html>

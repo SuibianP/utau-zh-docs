@@ -1,0 +1,884 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="UTAU相关各种文档的简体中文翻译堆积处。">
+      
+      
+        <meta name="author" content="隋卞">
+      
+      
+      <link rel="icon" href="../../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>闪闪的原音设定碎碎念1 - utau-zh-docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ShanShan-De-YuanYin-SheDing-SuiSuiNian-1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+<a href="https://github.com/SuibianP/utau-zh-docs/issues/new" target="_blank">issue</a>大欢迎！<a href="https://github.com/SuibianP/utau-zh-docs/compare" target="_blank">pull request</a>大欢迎！乌拉！
+
+          </div>
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="utau-zh-docs" class="md-header__button md-logo" aria-label="utau-zh-docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.ico" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            utau-zh-docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              闪闪的原音设定碎碎念1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SuibianP/utau-zh-docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SuibianP/utau-zh-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        首页
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../SHIRO-readme/SHIRO-readme/" class="md-tabs__link md-tabs__link--active">
+        文档
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="utau-zh-docs" class="md-nav__button md-logo" aria-label="utau-zh-docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.ico" alt="logo">
+
+    </a>
+    utau-zh-docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SuibianP/utau-zh-docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SuibianP/utau-zh-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          首页
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="首页" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          首页
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        文档列表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTORS/" class="md-nav__link">
+        鸣谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTING/" class="md-nav__link">
+        帮帮我！【雾
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          文档
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="文档" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          文档
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SHIRO-readme/SHIRO-readme/" class="md-nav__link">
+        SHIRO自述文档
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../presamp-ini-spec/presamp-ini-spec/" class="md-nav__link">
+        presamp.ini说明文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UTAU-plugin-dev/UTAU-plugin-dev/" class="md-nav__link">
+        UTAU插件开发方法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setParam-plugin-dev/setParam-plugin-dev/" class="md-nav__link">
+        关于setParam插件的开发方法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rentan-info/rentan-info/" class="md-nav__link">
+        整体录制单独音（连单风单独音）的解说
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../doppeltler_readme_zh/doppeltler_readme_zh/" class="md-nav__link">
+        doppeltler自述文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UTAU-english-phoneme-list/UTAU-english-phoneme-list/" class="md-nav__link">
+        UTAU英语音源音素对应表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          闪闪的原音设定碎碎念1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        闪闪的原音设定碎碎念1
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#YiTiao-YuanYin-SheDing-TiaoMu-Li-DaoDi-BaoHan-Le-ShenMe" class="md-nav__link">
+    一条原音设定条目里到底包含了什么
+  </a>
+  
+    <nav class="md-nav" aria-label="一条原音设定条目里到底包含了什么">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Zuo-BianJie-He-You-BianJie" class="md-nav__link">
+    左边界和右边界
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#XianXing-FaSheng" class="md-nav__link">
+    先行发声
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ChongDie" class="md-nav__link">
+    重叠
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#GuDing-1" class="md-nav__link">
+    固定1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#BieMing" class="md-nav__link">
+    别名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#JieShu" class="md-nav__link">
+    结束
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UTAU-batchfile-analyze/UTAU-batchfile-analyze/" class="md-nav__link">
+        UTAU 渲染脚本
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fuck-utau/fuck-utau/" class="md-nav__link">
+        【吐槽向】论UTAU设计之烂
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utau_pitch_string/utau-pitch-analysis/" class="md-nav__link">
+        UTAU Pitch字符串解码
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#YiTiao-YuanYin-SheDing-TiaoMu-Li-DaoDi-BaoHan-Le-ShenMe" class="md-nav__link">
+    一条原音设定条目里到底包含了什么
+  </a>
+  
+    <nav class="md-nav" aria-label="一条原音设定条目里到底包含了什么">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Zuo-BianJie-He-You-BianJie" class="md-nav__link">
+    左边界和右边界
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#XianXing-FaSheng" class="md-nav__link">
+    先行发声
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ChongDie" class="md-nav__link">
+    重叠
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#GuDing-1" class="md-nav__link">
+    固定1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#BieMing" class="md-nav__link">
+    别名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#JieShu" class="md-nav__link">
+    结束
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/SuibianP/utau-zh-docs/edit/master/docs/docs/原音设定1_oto条目到底包含了什么/原音设定1.md" title="编辑此页" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="ShanShan-De-YuanYin-SheDing-SuiSuiNian-1">闪闪的原音设定碎碎念1<a class="headerlink" href="#ShanShan-De-YuanYin-SheDing-SuiSuiNian-1" title="Permanent link">♬</a></h1>
+<p>作者：<a href="https://github.com/shine5402">shine_5402</a></p>
+<h2 id="YiTiao-YuanYin-SheDing-TiaoMu-Li-DaoDi-BaoHan-Le-ShenMe">一条原音设定条目里到底包含了什么<a class="headerlink" href="#YiTiao-YuanYin-SheDing-TiaoMu-Li-DaoDi-BaoHan-Le-ShenMe" title="Permanent link">♬</a></h2>
+<p>今天来讨论一下↑这个问题好了。</p>
+<p>那我们先来看一条原音设定项目（就是oto.ini里的一条数据）：</p>
+<p><img alt="原音设定项目示例截图" src="../%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1_%E7%A4%BA%E4%BE%8B%E6%9D%A1%E7%9B%AE.png" /></p>
+<p>可以看到，一条原音设定包含了：</p>
+<ul>
+<li>
+<p>Left Blank（左边界）：指的是这个原音块的起始在WAV原音的哪个位置</p>
+</li>
+<li>
+<p>Overlap（重叠）：指的是后面音符的辅音部分和前面音符的结尾部分的重叠长度，两者将同时发声</p>
+</li>
+<li>
+<p>Pre-utterance（先行发声）：指的是该原音块提前于音符发声的部分何时结束。通常处于辅音的结束部分。</p>
+</li>
+<li>
+<p>Consonant（固定<sup id="fnref2:consonant"><a class="footnote-ref" href="#fn:consonant">1</a></sup>）：指的是该原音块拉伸/循环区的起始位置，或者说固定不拉伸区域的结束位置。在左边界和它之间的部分不会被拉伸，不过可以通过指定辅音速度来拉伸/收缩这一区域。</p>
+</li>
+<li>
+<p>Right Blank（右边界）：指的是是这个原音块的结束在WAV原音的哪个位置</p>
+</li>
+<li>
+<p>Alias（辅助记号/别名）：这个原音块在歌词区域（就是音符里输入的东西）应使用什么歌词进行调用。叫做别名是因为它代替了WAV的文件名（在没有别名时）作为歌词被识别的职责。</p>
+</li>
+</ul>
+<p>而在oto.ini文件中，原音设定数据的格式是</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>[文件名].wav=别名,左边界,固定,右边界,先行发声,重叠
+</code></pre></div></td></tr></table></div>
+<p>然后让我们先来明晰一个概念：<strong>UTAU的原音设定是基于单独音（一个音节）<sup id="fnref:韵尾问题"><a class="footnote-ref" href="#fn:韵尾问题">2</a></sup>设计的。</strong> 事实上，连续音这一概念也是在UTAU出现之后过一段时间的事情了<sup id="fnref:连续音历史"><a class="footnote-ref" href="#fn:连续音历史">3</a></sup>。因此，原音设定的各项数据的定义应该都是跟着单独音的思路来的。而连续音和CVVC等带有连续性的方案则是因为这套原音设定机制虽然是按照单独音的思路设计，但也能为带有连续性的方案提供支持，详见之后关于 <em>连续音和CVVC</em> 的讨论。</p>
+<p>那，在得知上述概念之后，我们再来看看原音设定的各项条目：</p>
+<h4 id="Zuo-BianJie-He-You-BianJie">左边界和右边界<a class="headerlink" href="#Zuo-BianJie-He-You-BianJie" title="Permanent link">♬</a></h4>
+<p>这没什么可说的，就是调用的原音块的开始和结束……</p>
+<h4 id="XianXing-FaSheng">先行发声<a class="headerlink" href="#XianXing-FaSheng" title="Permanent link">♬</a></h4>
+<p>先行发声就有比较多的说头了。</p>
+<p>在讨论为什么要设计先行发声这个概念之前，我们先讨论一个前置条件：<strong>人类对节奏点的判断是基于*辅音结束、元音开始*的地方（或者说*音节核的起始*）。</strong></p>
+<p>首先我们可以直观的感受一下这个问题。对自己节奏感比较有自信的同学可以唱一首歌，然后打拍子（或者可以开节拍器），你可以直接感受，或者录下来之后再在软件里观察。你会发现自己的拍子都是打在元音的起始点的地方：</p>
+<p><img alt="原音设定1_先行发声_打拍子示例" src="../%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1_%E5%85%88%E8%A1%8C%E5%8F%91%E5%A3%B0_%E6%89%93%E6%8B%8D%E5%AD%90%E7%A4%BA%E4%BE%8B.png" /></p>
+<p>当然，如果觉得自己节奏感不太好的同学，可以直接打开一首歌的贴混工程对对轨，你会发现，将鼓点对齐到元音起始点才会带来对好了轨的感觉。（如果原曲不是很母带到砖块，或者有伴奏比较不吵，可以看清鼓点和人声的部分，也可以用原曲和配布的伴奏进行比对）。</p>
+<p><img alt="原音设定1_先行发声_对轨示例" src="../%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1_%E5%85%88%E8%A1%8C%E5%8F%91%E5%A3%B0_%E5%AF%B9%E8%BD%A8%E7%A4%BA%E4%BE%8B.png" /></p>
+<p>经过这些体验，估计对于这个概念大家应该也清楚了。实际上也有相关论文讨论过这个问题，参见：【Allen, George D . The Location of Rhythmic Stress Beats in English: an Experimental Study I[J]. Language &amp; Speech, 1972, 15(1):72-100.】虽然这篇论文是讨论英语对话中的节奏问题，但是对于“节奏点位于辅音结束母音起始”这个概念提供了具体科学的实验证据。</p>
+<p>那就让我们来正式谈谈先行发声。先行发声的意思就是：<strong>该原音块提前于音符发声的部分</strong>。也就是说，对于这个音符，从左边界到先行发声的部分并不在这个音符的范围内，而是占用前一个音符的位置。先行发声通常位于辅音的结束位置。我们可以从UTAU的“显示音高曲线”模式看到：</p>
+<p><img alt="原音设定1_先行发声_UTAU中的显示" src="../%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1_%E5%85%88%E8%A1%8C%E5%8F%91%E5%A3%B0_UTAU%E4%B8%AD%E7%9A%84%E6%98%BE%E7%A4%BA.png" /></p>
+<p>红框内就是提前于该音符的部分。</p>
+<p>那么为什么要这么设计呢？这就和之前讨论到的节奏点问题有关了。
+我们先来随便画几个音符：</p>
+<p><img alt="原音设定1_先行发声_音符" src="../%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1_%E5%85%88%E8%A1%8C%E5%8F%91%E5%A3%B0_%E9%9F%B3%E7%AC%A6.png" /></p>
+<p>然后，我们知道，节奏点肯定是要和音符对齐的，所以我们在音符的起始处画几个标记，作为节奏点参照：</p>
+<p><img alt="原音设定1_先行发声_音符with节奏点.png" src="../%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1_%E5%85%88%E8%A1%8C%E5%8F%91%E5%A3%B0_%E9%9F%B3%E7%AC%A6with%E8%8A%82%E5%A5%8F%E7%82%B9.png" /></p>
+<p>然后我们再引入两个事实：一，很显然的，<strong>不同的辅音长度不同</strong>，而辅音的长度和音符的长度并不是正相关，也就是说并不是音符的长度变长，辅音就必须变长；二、唱歌时占据音符绝大部分位置的是元音，且元音的长度和音符的长度成正相关，也就是音符的长度的变化会导致元音长度的变化，也就是说**程序需要去计算需要合成的元音的长度**，而辅音的长度会影响元音的长度。嘛，说的简洁一点就是元音长度是应变量，辅音长度和音符长度是自变量。</p>
+<p>然后，我们先假定没有先行发声这一概念，也就是辅音本身位于当前音符内，也就是音符的起始位置和辅音的位置一致。我们根据这一条件模拟一下程序计算出的元辅音长度（瞎划拉的，不是很严谨）：</p>
+<p><img alt="原音设定1_先行发声_音符辅音1.png" src="../%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1_%E5%85%88%E8%A1%8C%E5%8F%91%E5%A3%B0_%E9%9F%B3%E7%AC%A6%E8%BE%85%E9%9F%B31.png" /></p>
+<p>接下来，因为我们上面讨论的“人类对节奏点的判断是基于*辅音结束、元音开始*的地方”的原因，我们来移动一下这个音轨，让其第二个辅音对齐节奏点：</p>
+<p><img alt="原音设定1_先行发声_音符辅音1_移动1.png" src="../%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1_%E5%85%88%E8%A1%8C%E5%8F%91%E5%A3%B0_%E9%9F%B3%E7%AC%A6%E8%BE%85%E9%9F%B31_%E7%A7%BB%E5%8A%A81.png" /></p>
+<p>问题出现了。我们可以看到除了第二个辅音之外，其他的辅音结束点都没有和节奏点对齐。这是因为每种辅音的长度并不完全一致，如果将其时长放入音符本身，那么就会导致其结束点之间的间隔变成了“音符长度-辅音长度”，那么就会和节奏点要求的“音符长度”不同，从而导致偏移。</p>
+<p>所以先行发声就是为了解决这个问题。接下来我们图中的辅音都移动至前面的音符：</p>
+<p><img alt="原音设定1_先行发声_音符辅音2.png" src="../%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1_%E5%85%88%E8%A1%8C%E5%8F%91%E5%A3%B0_%E9%9F%B3%E7%AC%A6%E8%BE%85%E9%9F%B32.png" /></p>
+<p>可以看到，将辅音放置在音符的前面就可以解决上述的辅音结束点间隔和节奏点要求不同的问题了。</p>
+<p>参见：【Berndtsson G . The KTH Rule System for Singing Synthesis[J]. Computer Music Journal, 1996, 20(1):76-91.】涉及到这方面的讨论。</p>
+<h4 id="ChongDie">重叠<a class="headerlink" href="#ChongDie" title="Permanent link">♬</a></h4>
+<p>我们先来随便唱一段歌，然后打开看看其中两个字：</p>
+<p><img alt="原音设定1_重叠_歌声示例.png" src="../%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1_%E9%87%8D%E5%8F%A0_%E6%AD%8C%E5%A3%B0%E7%A4%BA%E4%BE%8B.png" /></p>
+<p>我们可以看到，部分种类的辅音和元音之间其实有着重叠部分。所以原音设定中的“重叠”的设计就是为了模拟这种重叠。我们可以从这张图中看到在“显示音高曲线”模式下原音设定各数值的位置：</p>
+<p><img alt="原音设定1_原音设定在音符上.png" src="../%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1_%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A%E5%9C%A8%E9%9F%B3%E7%AC%A6%E4%B8%8A.png" /></p>
+<p>重叠也可以是负数。在这种情况下，重叠会在辅音前创造一个小小的空白区域：</p>
+<p><img alt="原音设定1_原音设定在音符上2.png" src="../%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1_%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A%E5%9C%A8%E9%9F%B3%E7%AC%A6%E4%B8%8A2.png" /></p>
+<p>（很偷懒，直接复制了之前的图例）</p>
+<p>这种机制允许你模拟塞音和塞擦音前的短暂空白<sup id="fnref:模拟空白的其他办法"><a class="footnote-ref" href="#fn:模拟空白的其他办法">4</a></sup>：</p>
+<p><img alt="原音设定1_重叠_塞音歌声示例.png" src="../%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1_%E9%87%8D%E5%8F%A0_%E5%A1%9E%E9%9F%B3%E6%AD%8C%E5%A3%B0%E7%A4%BA%E4%BE%8B.png" /></p>
+<h4 id="GuDing-1">固定<sup id="fnref:consonant"><a class="footnote-ref" href="#fn:consonant">1</a></sup><a class="headerlink" href="#GuDing-1" title="Permanent link">♬</a></h4>
+<p>轮到固定这个数值了。</p>
+<p>上文也提到过，辅音本身是不属于拉伸范围的，一般情况下辅音并不会被UTAU拉伸（除非你手动指定辅音速度要求它被拉伸）。</p>
+<p>不过不属于拉伸范围的也不止是单纯的辅音。首先，辅音过渡到稳定的元音也会有一小段部分，这一部分你肯定不会想程序去拉伸。</p>
+<p><img alt="原音设定1_固定范围.png" src="../%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1_%E5%9B%BA%E5%AE%9A%E8%8C%83%E5%9B%B4.png" /></p>
+<p>另一个问题则是韵头，比如各种语言中的双元音。如中文中的bie，你唱歌的时候拉长的应当是其中的ie的e（e0）那部分，i你肯定不会因为音符越长而唱的越长。所以这一部分也应当属于不被拉伸的范围。</p>
+<p><img alt="原音设定1_固定范围_韵头.png" src="../%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1_%E5%9B%BA%E5%AE%9A%E8%8C%83%E5%9B%B4_%E9%9F%B5%E5%A4%B4.png" /></p>
+<p>（为了看得清楚一点，其实这里念的是biao）</p>
+<p>这就是“固定”机制的作用，只要将这些在音开头不希望被拉伸的部分包进去，UTAU就不会去拉伸他们（除非指定辅音速度）。如果你的音符最后计算出的元音长度短于固定区域，那么UTAU会直接对固定区域进行裁剪，放弃后面的拉伸区域<sup id="fnref:中文快歌下韵头"><a class="footnote-ref" href="#fn:中文快歌下韵头">5</a></sup>。</p>
+<p>一般说来，只要保证固定和右边界之间是一段稳定的元音区域就好。</p>
+<h4 id="BieMing">别名<a class="headerlink" href="#BieMing" title="Permanent link">♬</a></h4>
+<p>别名也没啥可说的……单纯就是歌词区域要输入什么东西来调用这个块而已。</p>
+<h3 id="JieShu">结束<a class="headerlink" href="#JieShu" title="Permanent link">♬</a></h3>
+<p>那今天姑且就先讲到这里吧。</p>
+<p>以下是致谢：</p>
+<p>十分感谢farter聚聚解答了我关于对原音块的称呼和先行发声概念解释的疑问；十分感谢铃伊桑和我就先行发声的概念的讨论；十分感谢哈鲁的UTAU入门教程，我的命是哈鲁给的（啊？）；也十分感谢哈鲁鲁的UTAU群的大家。</p>
+<p>那么之后有机会再见……？或许吧。</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:consonant">
+<p>虽然此处consonant应当被翻译为辅音，UTAU软件中也是这么叫的，但是因为实际上它的作用是确定固定范围，称其为辅音可能会造成之后的讨论中产生混淆，于是我便直接称其为固定。至于为何UTAU要把它叫做辅音，我猜是和把拉伸区叫做“元音”这一行为相对的关系。&#160;<a class="footnote-backref" href="#fnref:consonant" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:consonant" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:韵尾问题">
+<p>事实上UTAU的原音设定条目也没有考虑到韵尾、音节尾等音末不拉伸音素的存在，所以音节中有音末不拉伸音素的语言（如中文）即使使用单独音方案，也需要单独拆分韵尾/音节末音素。在新版本的开发计划中，考虑到音末不拉伸音素的“后固定区域”已经有了支持计划，且新放出的本家引擎已经拥有了相关支持。&#160;<a class="footnote-backref" href="#fnref:韵尾问题" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:连续音历史">
+<p>如果要展开来讲连续音出现的契机、历史和贡献者，那估计能再开一篇碎碎念……所以这里不去展开（这方面我也不算很了解），感兴趣的可以自己去了解一下（？）&#160;<a class="footnote-backref" href="#fnref:连续音历史" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:模拟空白的其他办法">
+<p>其实也可以通过移动左包入部分空白，Ovl设为0或者保证Ovl之后有一定空白区域的方式来模拟这种空白，两种方法的利弊倒是见仁见智。&#160;<a class="footnote-backref" href="#fnref:模拟空白的其他办法" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:中文快歌下韵头">
+<p>因此，中文快歌下可能需要用辅音速度手动控制一下韵头长度。&#160;<a class="footnote-backref" href="#fnref:中文快歌下韵头" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2022-05-18T00:55:50+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2022-05-18</span>
+      
+    
+  </small>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            隋卞 et al.，在<a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode.zh-Hans" target="_blank">知识共享许可协议—署名—相同方式共享 4.0 协议国际版</a>下发布
+          </div>
+        
+        使用
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+	部署
+      </div>
+      <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/SuibianP" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://qm.qq.com/cgi-bin/qm/qr?k=mJazCWZGab4flBhFeyEGVCwi6fD0eZMh&noverify=0" target="_blank" rel="noopener" title="qm.qq.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M433.754 420.445c-11.526 1.393-44.86-52.741-44.86-52.741 0 31.345-16.136 72.247-51.051 101.786 16.842 5.192 54.843 19.167 45.803 34.421-7.316 12.343-125.51 7.881-159.632 4.037-34.122 3.844-152.316 8.306-159.632-4.037-9.045-15.25 28.918-29.214 45.783-34.415-34.92-29.539-51.059-70.445-51.059-101.792 0 0-33.334 54.134-44.859 52.741-5.37-.65-12.424-29.644 9.347-99.704 10.261-33.024 21.995-60.478 40.144-105.779C60.683 98.063 108.982.006 224 0c113.737.006 163.156 96.133 160.264 214.963 18.118 45.223 29.912 72.85 40.144 105.778 21.768 70.06 14.716 99.053 9.346 99.704z"/></svg>
+    </a>
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs", "navigation.instant", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  </body>
+</html>

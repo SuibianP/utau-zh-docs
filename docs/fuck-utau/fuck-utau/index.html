@@ -1,0 +1,1141 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="UTAU相关各种文档的简体中文翻译堆积处。">
+      
+      
+        <meta name="author" content="隋卞">
+      
+      
+      <link rel="icon" href="../../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>【吐槽向】论UTAU设计之烂 - utau-zh-docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#-TuCao-Xiang-Lun-UTAU-SheJi-ZhiLan" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+<a href="https://github.com/SuibianP/utau-zh-docs/issues/new" target="_blank">issue</a>大欢迎！<a href="https://github.com/SuibianP/utau-zh-docs/compare" target="_blank">pull request</a>大欢迎！乌拉！
+
+          </div>
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="utau-zh-docs" class="md-header__button md-logo" aria-label="utau-zh-docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.ico" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            utau-zh-docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【吐槽向】论UTAU设计之烂
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SuibianP/utau-zh-docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SuibianP/utau-zh-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        首页
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../SHIRO-readme/SHIRO-readme/" class="md-tabs__link md-tabs__link--active">
+        文档
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="utau-zh-docs" class="md-nav__button md-logo" aria-label="utau-zh-docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.ico" alt="logo">
+
+    </a>
+    utau-zh-docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SuibianP/utau-zh-docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SuibianP/utau-zh-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          首页
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="首页" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          首页
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        文档列表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTORS/" class="md-nav__link">
+        鸣谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTING/" class="md-nav__link">
+        帮帮我！【雾
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          文档
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="文档" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          文档
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SHIRO-readme/SHIRO-readme/" class="md-nav__link">
+        SHIRO自述文档
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../presamp-ini-spec/presamp-ini-spec/" class="md-nav__link">
+        presamp.ini说明文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UTAU-plugin-dev/UTAU-plugin-dev/" class="md-nav__link">
+        UTAU插件开发方法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setParam-plugin-dev/setParam-plugin-dev/" class="md-nav__link">
+        关于setParam插件的开发方法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rentan-info/rentan-info/" class="md-nav__link">
+        整体录制单独音（连单风单独音）的解说
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../doppeltler_readme_zh/doppeltler_readme_zh/" class="md-nav__link">
+        doppeltler自述文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UTAU-english-phoneme-list/UTAU-english-phoneme-list/" class="md-nav__link">
+        UTAU英语音源音素对应表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1_oto%E6%9D%A1%E7%9B%AE%E5%88%B0%E5%BA%95%E5%8C%85%E5%90%AB%E4%BA%86%E4%BB%80%E4%B9%88/%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1/" class="md-nav__link">
+        闪闪的原音设定碎碎念1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UTAU-batchfile-analyze/UTAU-batchfile-analyze/" class="md-nav__link">
+        UTAU 渲染脚本
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          【吐槽向】论UTAU设计之烂
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        【吐槽向】论UTAU设计之烂
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#FuYi-QianYan" class="md-nav__link">
+    负壹、前言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Ling-QueXian-Zhi-Yu-ZhengTi" class="md-nav__link">
+    零、缺陷之于整体
+  </a>
+  
+    <nav class="md-nav" aria-label="零、缺陷之于整体">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Yi-JinCheng-ChuangJian" class="md-nav__link">
+    一、进程创建
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Er-LinShiWenJian" class="md-nav__link">
+    二、临时文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#San-FenLi-resampler-He-wavtool" class="md-nav__link">
+    三、分离resampler和wavtool
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Yi-QueXian-Zhi-Yu-ShuJuJieGou" class="md-nav__link">
+    壹、缺陷之于数据结构
+  </a>
+  
+    <nav class="md-nav" aria-label="壹、缺陷之于数据结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Yi-oto-RongYu" class="md-nav__link">
+    一、oto冗余
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Er-QueXian-Zhi-Yu-JieKou" class="md-nav__link">
+    贰、缺陷之于接口
+  </a>
+  
+    <nav class="md-nav" aria-label="贰、缺陷之于接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Yi-resampler-CanShuChuanDi" class="md-nav__link">
+    一、resampler参数传递
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Er-wavtool-CanShuChuanDi" class="md-nav__link">
+    二、wavtool参数传递
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#San-QueXian-Zhi-Yu-PinJie-Ji-JiYuan-XuanZe" class="md-nav__link">
+    叁、缺陷之于拼接及基元选择
+  </a>
+  
+    <nav class="md-nav" aria-label="叁、缺陷之于拼接及基元选择">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Yi-Duo-YinGao-YuLiaoKu" class="md-nav__link">
+    一、多音高语料库
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Er-ShuangYin-Zi-SanYinZi-Ji-SuoWei-LianXu-Yin-PinJie" class="md-nav__link">
+    二、双音子、三音子（即所谓“连续音”）拼接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#San-XiaoJie" class="md-nav__link">
+    三、小结
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utau_pitch_string/utau-pitch-analysis/" class="md-nav__link">
+        UTAU Pitch字符串解码
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#FuYi-QianYan" class="md-nav__link">
+    负壹、前言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Ling-QueXian-Zhi-Yu-ZhengTi" class="md-nav__link">
+    零、缺陷之于整体
+  </a>
+  
+    <nav class="md-nav" aria-label="零、缺陷之于整体">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Yi-JinCheng-ChuangJian" class="md-nav__link">
+    一、进程创建
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Er-LinShiWenJian" class="md-nav__link">
+    二、临时文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#San-FenLi-resampler-He-wavtool" class="md-nav__link">
+    三、分离resampler和wavtool
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Yi-QueXian-Zhi-Yu-ShuJuJieGou" class="md-nav__link">
+    壹、缺陷之于数据结构
+  </a>
+  
+    <nav class="md-nav" aria-label="壹、缺陷之于数据结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Yi-oto-RongYu" class="md-nav__link">
+    一、oto冗余
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Er-QueXian-Zhi-Yu-JieKou" class="md-nav__link">
+    贰、缺陷之于接口
+  </a>
+  
+    <nav class="md-nav" aria-label="贰、缺陷之于接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Yi-resampler-CanShuChuanDi" class="md-nav__link">
+    一、resampler参数传递
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Er-wavtool-CanShuChuanDi" class="md-nav__link">
+    二、wavtool参数传递
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#San-QueXian-Zhi-Yu-PinJie-Ji-JiYuan-XuanZe" class="md-nav__link">
+    叁、缺陷之于拼接及基元选择
+  </a>
+  
+    <nav class="md-nav" aria-label="叁、缺陷之于拼接及基元选择">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Yi-Duo-YinGao-YuLiaoKu" class="md-nav__link">
+    一、多音高语料库
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Er-ShuangYin-Zi-SanYinZi-Ji-SuoWei-LianXu-Yin-PinJie" class="md-nav__link">
+    二、双音子、三音子（即所谓“连续音”）拼接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#San-XiaoJie" class="md-nav__link">
+    三、小结
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/SuibianP/utau-zh-docs/edit/master/docs/docs/fuck-utau/fuck-utau.md" title="编辑此页" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="-TuCao-Xiang-Lun-UTAU-SheJi-ZhiLan">【吐槽向】论UTAU设计之烂<a class="headerlink" href="#-TuCao-Xiang-Lun-UTAU-SheJi-ZhiLan" title="Permanent link">♬</a></h1>
+<p><a href="http://bbs.ivocaloid.com/thread-127493-1-1.html">原文链接</a> 作者：Zleepwalking, http404, rgwan, strong920326</p>
+<hr />
+<p>作者: Zleepwalking    时间: 2014/9/2 07:38</p>
+<p>本帖最后由 Zleepwalking 于 2014/9/7 22:12 编辑</p>
+<h2 id="FuYi-QianYan">负壹、前言<a class="headerlink" href="#FuYi-QianYan" title="Permanent link">♬</a></h2>
+<p>2014.9.7 此文的确易造成认为是贬低对手提升自己的嫌疑。因此才会发到这个半个月没来个人的子版。只望从这些缺陷中找到可以作反面参考的地方。若有更好的专用于技术讨论之处，请回帖于此以提醒，我将转移此贴。
+对于那些对语音合成(Speech Synthesis)，尤其是对以下技术领域不具备基本常识的人，此贴言论可能看似极为激进。请自行规避。</p>
+<ul>
+<li>语音合成(Speech Synthesis)</li>
+<li>频谱音频处理(Spectral Audio Signal Processing)</li>
+<li>数字信号处理(Digital Signal Processing)</li>
+<li>语音学(Phonetics)</li>
+<li>计算机科学(Computer Science)</li>
+</ul>
+<p>对于极度死拥UTAU的调教者，若不退散，请自行参考其它合成系统与UTAU进行比较，方显出后者之劣势。可参考Festival和HTS。</p>
+<p>对于GUI和resampler的算法我不吐槽。此文针对UTAU作为一个合成框架的设计缺陷。望今后的拼接合成(Concatenative Synthesis)引擎吸取教训，不要重蹈覆辙。
+* 此列表或将持续增长。</p>
+<h2 id="Ling-QueXian-Zhi-Yu-ZhengTi">零、缺陷之于整体<a class="headerlink" href="#Ling-QueXian-Zhi-Yu-ZhengTi" title="Permanent link">♬</a></h2>
+<h3 id="Yi-JinCheng-ChuangJian">一、进程创建<a class="headerlink" href="#Yi-JinCheng-ChuangJian" title="Permanent link">♬</a></h3>
+<ol>
+<li>创建进程以传参、合成消耗大量系统资源、过度依赖操作系统（CreateProcess &lt;-&gt; fork+exec）。</li>
+<li>过长的参数。假如某些shell最长传递256字节，怎么办？</li>
+</ol>
+<h3 id="Er-LinShiWenJian">二、临时文件<a class="headerlink" href="#Er-LinShiWenJian" title="Permanent link">♬</a></h3>
+<ol>
+<li>临时文件存放于硬盘，拖慢合成速度，加快硬盘损耗。</li>
+<li>资源同时占用问题。不利于多线程合成的实施。</li>
+<li>临时文件为wav时域信号直接拼接效果一般不好。临时文件/数据至少是语音的某种中间表示，例如谐波+噪声，或LPC系数等。另重复量化，精度下降。</li>
+</ol>
+<h3 id="San-FenLi-resampler-He-wavtool">三、分离resampler和wavtool<a class="headerlink" href="#San-FenLi-resampler-He-wavtool" title="Permanent link">♬</a></h3>
+<ol>
+<li>这导致resampler对基元进行的操作全部与语境隔离（发音协同？音素长度？辅音长度？基频过渡？），故UTAU制品的拼接感几乎无法避免。</li>
+</ol>
+<h2 id="Yi-QueXian-Zhi-Yu-ShuJuJieGou">壹、缺陷之于数据结构<a class="headerlink" href="#Yi-QueXian-Zhi-Yu-ShuJuJieGou" title="Permanent link">♬</a></h2>
+<h3 id="Yi-oto-RongYu">一、oto冗余<a class="headerlink" href="#Yi-oto-RongYu" title="Permanent link">♬</a></h3>
+<ol>
+<li>为什么需要Left Bound和Right Bound？做音源库时把左右切掉不就得了？</li>
+<li>Overlap存入oto是不合理的，因为其时长与语境关系过于紧密。</li>
+</ol>
+<h2 id="Er-QueXian-Zhi-Yu-JieKou">贰、缺陷之于接口<a class="headerlink" href="#Er-QueXian-Zhi-Yu-JieKou" title="Permanent link">♬</a></h2>
+<h3 id="Yi-resampler-CanShuChuanDi">一、resampler参数传递<a class="headerlink" href="#Yi-resampler-CanShuChuanDi" title="Permanent link">♬</a></h3>
+<ol>
+<li>传参目标时长为整个音节的时长，而preutterance指定的是时长修改前发声起始点(VOT)的位置，那么势必造成时长修改后对不上节奏的情况。左端平稳点参数的确防止了大多情况下对齐被偏移的情况，然而这个设计造成的诸多不便缺无法挽回。例如——辅音时长不能增加、极短时长的发音时间错误。</li>
+<li>通过创建进程合成、传递参数。</li>
+<li>无需把oto中已有的信息传入resampler。例如preutterance。</li>
+</ol>
+<h3 id="Er-wavtool-CanShuChuanDi">二、wavtool参数传递<a class="headerlink" href="#Er-wavtool-CanShuChuanDi" title="Permanent link">♬</a></h3>
+<ol>
+<li>为什么wavtool既要拼接又要加包络？为什么包络这种基元级别的操作不交给resampler？</li>
+<li>为何包络只有固定数量的控制点？包络使用何种方式插值？</li>
+</ol>
+<h2 id="San-QueXian-Zhi-Yu-PinJie-Ji-JiYuan-XuanZe">叁、缺陷之于拼接及基元选择<a class="headerlink" href="#San-QueXian-Zhi-Yu-PinJie-Ji-JiYuan-XuanZe" title="Permanent link">♬</a></h2>
+<h3 id="Yi-Duo-YinGao-YuLiaoKu">一、多音高语料库<a class="headerlink" href="#Yi-Duo-YinGao-YuLiaoKu" title="Permanent link">♬</a></h3>
+<ol>
+<li>基元音高的选择仅参考起始频率。试想一个C4到C5的滑音，选择的会是C4的基元而不是C5。更好的做法是将基元选择的工作扔给resampler。（这同时也是resampler接口的设计错误）</li>
+</ol>
+<h3 id="Er-ShuangYin-Zi-SanYinZi-Ji-SuoWei-LianXu-Yin-PinJie">二、双音子、三音子（即所谓“连续音”）拼接<a class="headerlink" href="#Er-ShuangYin-Zi-SanYinZi-Ji-SuoWei-LianXu-Yin-PinJie" title="Permanent link">♬</a></h3>
+<p>双音子拼接合成(diphone synthesis)是一种已存在的技术，尽管我本人不赞成此做法，我仍需指出UTAU在此方面的缺陷。</p>
+<ol>
+<li>双音子的选择直接由用户指定，而不是resampler。（参考叁.一、贰.一）</li>
+</ol>
+<h3 id="San-XiaoJie">三、小结<a class="headerlink" href="#San-XiaoJie" title="Permanent link">♬</a></h3>
+<p>UTAU设计初期决定了note=音节=基元的概念，给之后的多音高、多音子拼接的实施带来困难。</p>
+<hr />
+<p>作者: http404    时间: 2014/9/2 14:11</p>
+<p>我是来对吐槽吐槽的【</p>
+<p>零-一 有resampler.dll模式不过虽然接口文档我还没看到过</p>
+<p>零-二 √</p>
+<p>零-三 前后隔离问题是存在的。连接感问题，可能还需要用更多高质量的音库实验（比如金坷垃（？））。所谓连接感的失败是有很多方面共同作用的，要修复必先清楚了解各个细节，各个掌握少不了一些调教实验与练习。</p>
+<p>壹-一-1 波形复用的情况其实是不少的，多对一有各种不同用法，留一个这个没问题。</p>
+<p>壹-一-2 存的都是基础值，几乎所有东西都会随语境变化，由调教者来决定。一些不完全无声化就是节奏对齐点向后拖，拖到最后不放开就是完全无声化，而此时前面的overlap也拖到原本的节奏点了什么的。</p>
+<p>贰-一-1 的确是个坑，不过这个坑不好解决，尤其是要允许自接引擎的情况下。这需要很成熟的协议，对utau单人作者要求比较高了。实际上由于辅音速度调整造成的节奏偏离bug在v/pocaloid2中都存在，只要把一连续段首个音符的vel调小，这一段的位置就整个跪了，pit的位置又是对的，结果是谜の转音。</p>
+<p>贰-一-2 同上有dll，期待这个接口会在更加改善之后才发布吧】</p>
+<p>贰-一-3 其实本身oto系统就该由resampler大系统来管不是么（。）的确是个分工细节的问题，分得细限制就大，分得粗需要很多时间实现，可能打击开发积极性，也就丧失了开放接口的意义。</p>
+<p>贰-二-1 同上分工问题</p>
+<p>贰-二-2 捂脸</p>
+<p>叁-一-1 部分是分工问题，部分也是引擎问题，vocaloid也存在这个特征。</p>
+<p>叁-二-2 因为一开始是基于文件名的，然后增加别名支持，要再增加自动词典以及resampler间通用的表示法规定什么的才行，这一坨处理又要划给resampler，整个得高度结合，要有协议支持，一开始的架构在这里就比较把自由交给用户，所以可以理解。</p>
+<p>叁-三 感觉RUCE把基础的UTAU想让resampler做的事情做完就可以了，进一步发展肯定是建立在更紧密结合的自己设计的系统上。</p>
+<hr />
+<p>作者: Zleepwalking    时间: 2014/9/2 19:10</p>
+<p>吐槽之吐槽之吐槽：</p>
+<blockquote>
+<p>零-一 有resampler.dll模式不过虽然接口文档我还没看到过</p>
+</blockquote>
+<p>没有wavtool.dll。</p>
+<blockquote>
+<p>零-二 √
+零-三 前后隔离问题是存在的。连接感问题，可能还需要用更多高质量的音库实验（比如金坷垃（？））。所谓连接感的失败是有很多方面共同作用的，要修复必先清楚了解各个细节，各个掌握少不了一些调教实验与练习。</p>
+</blockquote>
+<p>这种分离的结构造成了太多麻烦。难道我要让resampler和wavtool通过临时文件整合？调用顺序怎么办？或者干脆在运行时hack掉bat？</p>
+<blockquote>
+<p>壹-一-1 波形复用的情况其实是不少的，多对一有各种不同用法，留一个这个没问题。</p>
+</blockquote>
+<p>oto.ini限定死了拼接和音渡方式。事实上只有preutterance是大多参数预测方式都需要的。</p>
+<blockquote>
+<p>壹-一-2 存的都是基础值，几乎所有东西都会随语境变化，由调教者来决定。一些不完全无声化就是节奏对齐点向后拖，拖到最后不放开就是完全无声化，而此时前面的overlap也拖到原本的节奏点了什么的。</p>
+</blockquote>
+<p>同上。如果UTAU从根本上打算把一切扔给调教者，那就没什么可吐槽了，或者当作反面教材？</p>
+<blockquote>
+<p>贰-一-1 的确是个坑，不过这个坑不好解决，尤其是要允许自接引擎的情况下。这需要很成熟的协议，对utau单人作者要求比较高了。实际上由于辅音速度调整造成的节奏偏离bug在v/pocaloid2中都存在，只要把一连续段首个音符的vel调小，这一段的位置就整个跪了，pit的位置又是对的，结果是谜の转音。</p>
+</blockquote>
+<p>目测Vocaloid不会犯这么愚蠢的错误吧……【祈祷】</p>
+<blockquote>
+<p>贰-一-2 同上有dll，期待这个接口会在更加改善之后才发布吧】
+贰-一-3 其实本身oto系统就该由resampler大系统来管不是么（。）的确是个分工细节的问题，分得细限制就大，分得粗需要很多时间实现，可能打击开发积极性，也就丧失了开放接口的意义。</p>
+</blockquote>
+<p>对。如果要兼备开发积极性和可艹性，不如把吐槽的所有内容挖出来，作为一个“便捷开发”子系统存在，同时允许第三方开发与此系统平行的实现。</p>
+<blockquote>
+<p>贰-二-1 同上分工问题
+贰-二-2 捂脸
+叁-一-1 部分是分工问题，部分也是引擎问题，vocaloid也存在这个特征。</p>
+</blockquote>
+<p>Vocaloid没这个问题。参考VOICE PROCESSING AND SYNTHESIS BY PERFORMANCE SAMPLING AND SPECTRAL MODELS 之3.1节之 Modeling the Vowel Space。</p>
+<blockquote>
+<p>We approximated their voice model as the linear interpolation between the notes with closest pitches.</p>
+<p>叁-二-2 因为一开始是基于文件名的，然后增加别名支持，要再增加自动词典以及resampler间通用的表示法规定什么的才行，这一坨处理又要划给resampler，整个得高度结合，要有协议支持，一开始的架构在这里就比较把自由交给用户，所以可以理解。</p>
+</blockquote>
+<p>同壹.一.2、贰.一.3。</p>
+<blockquote>
+<p>叁-三 感觉RUCE把基础的UTAU想让resampler做的事情做完就可以了，进一步发展肯定是建立在更紧密结合的自己设计的系统上。</p>
+</blockquote>
+<p>让我想起GNU/HURD和GNU/Linux……</p>
+<hr />
+<p>作者: http404    时间: 2014/9/2 19:42</p>
+<p>本帖最后由 http404 于 2014/9/2 19:46 编辑</p>
+<p>吐槽之吐槽之吐槽之吐槽：</p>
+<blockquote>
+<blockquote>
+<p>零-一 有resampler.dll模式不过虽然接口文档我还没看到过</p>
+</blockquote>
+<p>没有wavtool.dll。</p>
+</blockquote>
+<p>系统发送了一个兵库北</p>
+<blockquote>
+<blockquote>
+<p>零-二 √
+零-三 前后隔离问题是存在的。连接感问题，可能还需要用更多高质量的音库实验（比如金坷垃（？））。所谓连接感的失败是有很多方面共同作用的，要修复必先清楚了解各个细节，各个掌握少不了一些调教实验与练习。</p>
+</blockquote>
+<p>这种分离的结构造成了太多麻烦。难道我要让resampler和wavtool通过临时文件整合？调用顺序怎么办？或者干脆在运行时hack掉bat？</p>
+</blockquote>
+<p>bat的确是个坑</p>
+<blockquote>
+<blockquote>
+<p>壹-一-1 波形复用的情况其实是不少的，多对一有各种不同用法，留一个这个没问题。</p>
+</blockquote>
+<p>oto.ini限定死了拼接和音渡方式。事实上只有preutterance是大多参数预测方式都需要的。</p>
+</blockquote>
+<p>的确，这个就是他一开始设计的最大支撑的模型，所以要从模型上下手只有自己搞新的。</p>
+<blockquote>
+<blockquote>
+<p>壹-一-2 存的都是基础值，几乎所有东西都会随语境变化，由调教者来决定。一些不完全无声化就是节奏对齐点向后拖，拖到最后不放开就是完全无声化，而此时前面的overlap也拖到原本的节奏点了什么的。</p>
+</blockquote>
+<p>同上。如果UTAU从根本上打算把一切扔给调教者，那就没什么可吐槽了，或者当作反面教材？</p>
+</blockquote>
+<p>根本上就是扔给调教者的，但是同时还有插件接口可以自动化地对音符做修改，让用户自己去调用。</p>
+<blockquote>
+<blockquote>
+<p>贰-一-1 的确是个坑，不过这个坑不好解决，尤其是要允许自接引擎的情况下。这需要很成熟的协议，对utau单人作者要求比较高了。实际上由于辅音速度调整造成的节奏偏离bug在v/pocaloid2中都存在，只要把一连续段首个音符的vel调小，这一段的位置就整个跪了，pit的位置又是对的，结果是谜の转音。</p>
+</blockquote>
+<p>目测Vocaloid不会犯这么愚蠢的错误吧……【祈祷】</p>
+</blockquote>
+<p>系统又发送了一个兵库北【的确P2上就是这么悲剧，V2没实地验证过，V3也还没验证过不过应该修好了吧，再不修好是要挨屁鼓的</p>
+<blockquote>
+<blockquote>
+<p>贰-一-2 同上有dll，期待这个接口会在更加改善之后才发布吧】
+贰-一-3 其实本身oto系统就该由resampler大系统来管不是么（。）的确是个分工细节的问题，分得细限制就大，分得粗需要很多时间实现，可能打击开发积极性，也就丧失了开放接口的意义。</p>
+</blockquote>
+<p>对。如果要兼备开发积极性和可艹性，不如把吐槽的所有内容挖出来，作为一个“便捷开发”子系统存在，同时允许第三方开发与此系统平行的实现。</p>
+</blockquote>
+<p>有这么蛋疼开发力的人很少了【</p>
+<blockquote>
+<blockquote>
+<p>贰-二-1 同上分工问题
+贰-二-2 捂脸
+叁-一-1 部分是分工问题，部分也是引擎问题，vocaloid也存在这个特征。</p>
+</blockquote>
+<p>Vocaloid没这个问题。参考VOICE PROCESSING AND SYNTHESIS BY PERFORMANCE SAMPLING AND SPECTRAL MODELS 之3.1节之 Modeling the Vowel Space。</p>
+<blockquote>
+<p>We approximated their voice model as the linear interpolation between the notes with closest pitches.</p>
+</blockquote>
+</blockquote>
+<p>v里面规则间隔地放很多个同发音音符，音高递增，你是可以明显听出每个音高采样管的边界的，经过边界的时候音色变化很明显。（至少P2是这样的，V3还没刻意没做过实验）单独音符都没有插值，不知道文章是不是口胡。真正插了值的我只知道cevio，不仅音高能插音色都能插（</p>
+<blockquote>
+<blockquote>
+<p>叁-二-2 因为一开始是基于文件名的，然后增加别名支持，要再增加自动词典以及resampler间通用的表示法规定什么的才行，这一坨处理又要划给resampler，整个得高度结合，要有协议支持，一开始的架构在这里就比较把自由交给用户，所以可以理解。</p>
+</blockquote>
+<p>同壹.一.2、贰.一.3。</p>
+<blockquote>
+<p>叁-三 感觉RUCE把基础的UTAU想让resampler做的事情做完就可以了，进一步发展肯定是建立在更紧密结合的自己设计的系统上。</p>
+</blockquote>
+<p>让我想起GNU/HURD和GNU/Linux……</p>
+</blockquote>
+<p>其实……我觉得他还是留了这个全给我们自己管的后路的：我们可以写个插件代替他的播放按钮【插件被调用的时候就是收到所选择的所有的音符信息【</p>
+<hr />
+<p>作者: Zleepwalking    时间: 2014/9/3 11:42</p>
+<p>本帖最后由 Zleepwalking 于 2014/9/3 11:43 编辑</p>
+<p>所以Rocaloid开发组早就打算尽早扔掉UTAU这个巨坑了。
+V的音高边界，应该只是插值的时间作用范围太短了。</p>
+<hr />
+<p>作者: rgwan    时间: 2014/9/3 13:24</p>
+<p>吐槽一下</p>
+<blockquote>
+<p>零·三：前后隔离问题是存在的。连接感问题，可能还需要用更多高质量的音库实验（比如金坷垃（？））。所谓连接感的失败是有很多方面共同作用的，要修复必先清楚了解各个细节，各个掌握少不了一些调教实验与练习。</p>
+</blockquote>
+<p>分开的连接方式让resampler无法得到更加详细的信息，无法带入语境中。用特别的调教技巧来对付这个问题，只能说是减轻，但是杜绝，还得让resampler得到更详细的信息。不论怎么说……对于我这种比较懒的家伙【，这绝对是个大问题。</p>
+<blockquote>
+<p>贰-一-1 的确是个坑，不过这个坑不好解决，尤其是要允许自接引擎的情况下。这需要很成熟的协议，对utau单人作者要求比较高了。实际上由于辅音速度调整造成的节奏偏离bug在v/pocaloid2中都存在，只要把一连续段首个音符的vel调小，这一段的位置就整个跪了，pit的位置又是对的，结果是谜の转音。</p>
+</blockquote>
+<p>V2确实有这个问题，但是UTAU严重到需要flags校准或者是后期的时候校准，也许是我录制音源方式不对？不论如何节拍混乱实在让人有点头疼啊。</p>
+<p>其实关于Library接口这一类的……UTAU又不开放出来，基本上有就和没有一样了，除非有人愿意去继续hack。其实我个人比较赞成另外一种接口方式，类似FastCGI的方式。UTAU可以后台开个engine进程，然后IPC丢数据出去，再IPC拿回wave data。</p>
+<p>关于Rocaloid目前只能使用UTAU/Cadencii这类的编辑器，比较让人觉得郁闷。不过开发组目前正在修改Qtractor作为前端，自己的编辑器出来也不远了吧。最近写了个Lyric MIDI文件的读取程序，有时间的话加上RUCE后端吧，然后用DAW调教去【</p>
+<hr />
+<p>作者: rgwan    时间: 2014/9/3 13:27</p>
+<p>呃……我们要吸取Hurd烂尾的教训啊。不论如何UTAU这类框架真得扔，不仅开发有点麻烦，初学者使用困难，合成方式纠结。真会影响效果和使用体验。</p>
+<hr />
+<p>作者: http404    时间: 2014/9/4 21:36</p>
+<p>节拍不对肯定是你自己搞糊了……这个最终位置是辅音速度、stp、preutterance三个东西是一起作用的，如果不对的话，去掉stp去掉覆盖参数值，重来重新交叠优化，节拍至少是不会有问题的……</p>
+<p>调金坷垃经常要调辅音速度的【</p>
+<hr />
+<p>作者: strong920326    时间: 2015/6/24 00:45</p>
+<p>本帖最后由 strong920326 于 2015/6/24 20:47 编辑</p>
+<p>拼接合成（PSOLA）中間會不自然,然而UTAU rocaloid都是這樣,vocaloid降低接点的数量是透過vcv cv vc以洛天依為例,她是一款三音录制中文vc cv与vcv辅助连续音源，采样大约为7600个,是连续音的采样方式,CeVIO是一個波型透過標註,再丟入hts_engine引擎</p>
+<hr />
+<p>作者: strong920326    时间: 2015/6/24 00:55</p>
+<p>確定用Qtractor(?)那個介面,我沒很認真用過,可是那個介面,比UTAU還可怕,跟V1有得比,而且還要添加參數以及歌手切換,還有windows用戶要怎麼辦?難到要弄成像MUTA不用調教? </p>
+<hr />
+<p>作者: Zleepwalking    时间: 2015/6/25 21:10</p>
+<p>我们试着给Qtractor的音符加上歌词编辑功能，最后放弃了，问题倒不是在于界面太难看，而是代码结构不很适合修改。此后我们决定自己开发编辑器。</p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2022-05-18T00:55:50+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2022-05-18</span>
+      
+    
+  </small>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            隋卞 et al.，在<a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode.zh-Hans" target="_blank">知识共享许可协议—署名—相同方式共享 4.0 协议国际版</a>下发布
+          </div>
+        
+        使用
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+	部署
+      </div>
+      <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/SuibianP" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://qm.qq.com/cgi-bin/qm/qr?k=mJazCWZGab4flBhFeyEGVCwi6fD0eZMh&noverify=0" target="_blank" rel="noopener" title="qm.qq.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M433.754 420.445c-11.526 1.393-44.86-52.741-44.86-52.741 0 31.345-16.136 72.247-51.051 101.786 16.842 5.192 54.843 19.167 45.803 34.421-7.316 12.343-125.51 7.881-159.632 4.037-34.122 3.844-152.316 8.306-159.632-4.037-9.045-15.25 28.918-29.214 45.783-34.415-34.92-29.539-51.059-70.445-51.059-101.792 0 0-33.334 54.134-44.859 52.741-5.37-.65-12.424-29.644 9.347-99.704 10.261-33.024 21.995-60.478 40.144-105.779C60.683 98.063 108.982.006 224 0c113.737.006 163.156 96.133 160.264 214.963 18.118 45.223 29.912 72.85 40.144 105.778 21.768 70.06 14.716 99.053 9.346 99.704z"/></svg>
+    </a>
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs", "navigation.instant", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  </body>
+</html>

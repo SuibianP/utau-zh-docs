@@ -1,0 +1,1242 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="UTAU相关各种文档的简体中文翻译堆积处。">
+      
+      
+        <meta name="author" content="隋卞">
+      
+      
+      <link rel="icon" href="../../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>SHIRO自述文档 - utau-zh-docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#SHIRO-ZiShu-WenDang" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+<a href="https://github.com/SuibianP/utau-zh-docs/issues/new" target="_blank">issue</a>大欢迎！<a href="https://github.com/SuibianP/utau-zh-docs/compare" target="_blank">pull request</a>大欢迎！乌拉！
+
+          </div>
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="utau-zh-docs" class="md-header__button md-logo" aria-label="utau-zh-docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.ico" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            utau-zh-docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SHIRO自述文档
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SuibianP/utau-zh-docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SuibianP/utau-zh-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        首页
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        文档
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="utau-zh-docs" class="md-nav__button md-logo" aria-label="utau-zh-docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.ico" alt="logo">
+
+    </a>
+    utau-zh-docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SuibianP/utau-zh-docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SuibianP/utau-zh-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          首页
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="首页" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          首页
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        文档列表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTORS/" class="md-nav__link">
+        鸣谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTING/" class="md-nav__link">
+        帮帮我！【雾
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          文档
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="文档" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          文档
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          SHIRO自述文档
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        SHIRO自述文档
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#JianJie" class="md-nav__link">
+    简介
+  </a>
+  
+    <nav class="md-nav" aria-label="简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#YiDian-LiShi" class="md-nav__link">
+    一点历史
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#HSMM-RuMen" class="md-nav__link">
+    HSMM入门
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ZuJian" class="md-nav__link">
+    组件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BianYi" class="md-nav__link">
+    编译
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#KaiShi-ShiYong" class="md-nav__link">
+    开始使用
+  </a>
+  
+    <nav class="md-nav" aria-label="开始使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ChuangJian-MeiShiYingYu-De-MoXing-Ji-Arpabet-YinWei-DingYi" class="md-nav__link">
+    创建美式英语的模型及Arpabet音位定义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ShiYong-XunLian-Hou-MoXing-DuiQi-YinWei-Yu-YuYin" class="md-nav__link">
+    使用训练后模型对齐音位与语音
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#YiZhi-YuYin-Yu-YinWei-ZhuanXie-XunLian-MoXing" class="md-nav__link">
+    已知语音与音位转写训练模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ShiYong-SPTK-TiDai-shiro-xxcc" class="md-nav__link">
+    使用SPTK替代shiro-xxcc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#JinJie-ZhuTi" class="md-nav__link">
+    进阶主题
+  </a>
+  
+    <nav class="md-nav" aria-label="进阶主题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Ke-Tiao-Guo-YinSu" class="md-nav__link">
+    可跳过音素
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Ke-TiDai-YinWei-Nei-TuoPu" class="md-nav__link">
+    可替代音位内拓扑
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#DAEM-XunLian" class="md-nav__link">
+    DAEM训练
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../presamp-ini-spec/presamp-ini-spec/" class="md-nav__link">
+        presamp.ini说明文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UTAU-plugin-dev/UTAU-plugin-dev/" class="md-nav__link">
+        UTAU插件开发方法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setParam-plugin-dev/setParam-plugin-dev/" class="md-nav__link">
+        关于setParam插件的开发方法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rentan-info/rentan-info/" class="md-nav__link">
+        整体录制单独音（连单风单独音）的解说
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../doppeltler_readme_zh/doppeltler_readme_zh/" class="md-nav__link">
+        doppeltler自述文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UTAU-english-phoneme-list/UTAU-english-phoneme-list/" class="md-nav__link">
+        UTAU英语音源音素对应表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1_oto%E6%9D%A1%E7%9B%AE%E5%88%B0%E5%BA%95%E5%8C%85%E5%90%AB%E4%BA%86%E4%BB%80%E4%B9%88/%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1/" class="md-nav__link">
+        闪闪的原音设定碎碎念1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UTAU-batchfile-analyze/UTAU-batchfile-analyze/" class="md-nav__link">
+        UTAU 渲染脚本
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fuck-utau/fuck-utau/" class="md-nav__link">
+        【吐槽向】论UTAU设计之烂
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utau_pitch_string/utau-pitch-analysis/" class="md-nav__link">
+        UTAU Pitch字符串解码
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#JianJie" class="md-nav__link">
+    简介
+  </a>
+  
+    <nav class="md-nav" aria-label="简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#YiDian-LiShi" class="md-nav__link">
+    一点历史
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#HSMM-RuMen" class="md-nav__link">
+    HSMM入门
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ZuJian" class="md-nav__link">
+    组件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#BianYi" class="md-nav__link">
+    编译
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#KaiShi-ShiYong" class="md-nav__link">
+    开始使用
+  </a>
+  
+    <nav class="md-nav" aria-label="开始使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ChuangJian-MeiShiYingYu-De-MoXing-Ji-Arpabet-YinWei-DingYi" class="md-nav__link">
+    创建美式英语的模型及Arpabet音位定义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ShiYong-XunLian-Hou-MoXing-DuiQi-YinWei-Yu-YuYin" class="md-nav__link">
+    使用训练后模型对齐音位与语音
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#YiZhi-YuYin-Yu-YinWei-ZhuanXie-XunLian-MoXing" class="md-nav__link">
+    已知语音与音位转写训练模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ShiYong-SPTK-TiDai-shiro-xxcc" class="md-nav__link">
+    使用SPTK替代shiro-xxcc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#JinJie-ZhuTi" class="md-nav__link">
+    进阶主题
+  </a>
+  
+    <nav class="md-nav" aria-label="进阶主题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Ke-Tiao-Guo-YinSu" class="md-nav__link">
+    可跳过音素
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Ke-TiDai-YinWei-Nei-TuoPu" class="md-nav__link">
+    可替代音位内拓扑
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#DAEM-XunLian" class="md-nav__link">
+    DAEM训练
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/SuibianP/utau-zh-docs/edit/master/docs/docs/SHIRO-readme/SHIRO-readme.md" title="编辑此页" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="SHIRO-ZiShu-WenDang">SHIRO自述文档<a class="headerlink" href="#SHIRO-ZiShu-WenDang" title="Permanent link">♬</a></h1>
+<p><a href="https://github.com/Sleepwalking/SHIRO/blob/master/readme.md">原文链接（英语）</a> 作者：<a href="https://github.com/Sleepwalking">Sleepwalking</a></p>
+<hr />
+<p>基于<a href="https://github.com/Sleepwalking/liblrhsmm">liblrhsmm</a>的音位-语音对齐工具包</p>
+<p>使用C及Lua荣誉出品。以GPLv3发布。</p>
+<h2 id="JianJie">简介<a class="headerlink" href="#JianJie" title="Permanent link">♬</a></h2>
+<p>SHIRO是一系列基于HSMM（隐半马尔可夫模型）的工具，用于将音位转写与语音录音对齐，以及训练音位-语音对齐模型。</p>
+<p>收集数小时计带有音位转写的语音数据在如今大多数训练语音识别器与合成器的方式中是重要的先决条件。通常此任务使用隐马尔可夫模型由名为强制对齐的操作自动化执行，特别是从90年代中期起，HTK软件包已成为语音识别与对齐的标准。</p>
+<p>SHIRO提供了与HTK相比许可证更宽松的轻量替代品。它类似于仅进行音位-语音对齐的精简版本，并配备了HSMM以及从零开始以几千行坚实的C代码（加上一点Lua）编写。</p>
+<h3 id="YiDian-LiShi">一点历史<a class="headerlink" href="#YiDian-LiShi" title="Permanent link">♬</a></h3>
+<p>SHIRO是liblrhsmm的姊妹项目，其首个版本于2015年夏季被开发。SHIRO初为liblrhsmm的一部分，后并入Moresampler。转变为工具包前，SHIRO仅支持flat-start训练，因此得名SHIRO（日语中含义为“白色”）。</p>
+<h2 id="HSMM-RuMen">HSMM入门<a class="headerlink" href="#HSMM-RuMen" title="Permanent link">♬</a></h2>
+<p>要使用SHIRO，有一些对隐半马尔可夫模型基础概念的理解比较好。</p>
+<p>一种理解HSMM的方式为通过马里奥类比。我们有一个带有平面地图及顶部一排问号砖块的超级马里奥设定，</p>
+<p><img alt="" src="https://user-images.githubusercontent.com/4531595/28723448-61880b96-737c-11e7-8e81-bd8beb84c7fb.png" /></p>
+<p>假如说每块砖块含有一枚不同的隐藏物品，可能是金币也可能是蘑菇。前几块砖块中隐藏的物品为金币的可能性更大而后几块中蘑菇的可能性更大。</p>
+<p>马里奥每次向右行走随机步数后跳起撞击一块砖块，该砖块将释放一枚物品。</p>
+<p><img alt="" src="https://user-images.githubusercontent.com/4531595/28723450-62c0e1ea-737c-11e7-9da0-d47fafe39048.png" /></p>
+<p>现在的问题为，马里奥已经从左到右走完此地图，我们获得了一些砖块释放的物品（按原始顺序），我们能否推断马里奥都在何处跳跃？</p>
+<p>这就是我们处理的典型类型HSMM问题。我们基本上是要将一序列物品与一序列可能的起跳位置对齐。</p>
+<p>在音位-语音对齐的语境下，马里奥在一排时长未知的音位间跳跃，当他穿过一个音位时，某种音位发音的声波会被发出。我们已知所有的音位，并拥有全部声音文件。问题为定位每一音位起始及终止的位置。</p>
+<p>HSMM用以描述此问题的方法论为：每一跳跃间隔是一个隐藏*状态*，在一个状态中会根据某种与状态关联的概率分布发出一个输出。一个状态的时长亦受一个概率分布调控。我们可以做两件事：</p>
+<ol>
+<li>干涉。已知输出序列及状态序列，确定每一状态起始/终止的最可能时间。</li>
+<li>训练。已知输出序列、状态序列及关联的时间序列，寻找调控状态时长及输出发出的概率分布。</li>
+</ol>
+<p>语音作为连续过程，必须被切割为短段以契合HSMM模式。这在*特征提取*阶段进行，即分析输入语音并每5或10毫秒提取一次特征。特征是描述输入在特定时刻听觉特性的浓缩数据。并且由于许多音位的丰富时间结构超出单一状态所能描述，实践中音位与状态并非一对一对应。通常对每一音位分配3至5个状态。</p>
+<h2 id="ZuJian">组件<a class="headerlink" href="#ZuJian" title="Permanent link">♬</a></h2>
+<p>SHIRO由下列工具构成，</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>描述</th>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="highlight">shiro-mkhsmm</code></td>
+<td>模型创建工具</td>
+<td>模型配置</td>
+<td>模型</td>
+</tr>
+<tr>
+<td><code class="highlight">shiro-init</code></td>
+<td>模型初始化工具</td>
+<td>模型、分段</td>
+<td>模型</td>
+</tr>
+<tr>
+<td><code class="highlight">shiro-rest</code></td>
+<td>模型重估算（即训练）工具</td>
+<td>模型、分段</td>
+<td>模型</td>
+</tr>
+<tr>
+<td><code class="highlight">shiro-align</code></td>
+<td>对齐器（使用训练后模型）</td>
+<td>模型、分段</td>
+<td>分段（更新后）</td>
+</tr>
+<tr>
+<td><code class="highlight">shiro-untie</code></td>
+<td>解开单声模型的工具</td>
+<td>模型、分段</td>
+<td>模型、分段</td>
+</tr>
+<tr>
+<td><code class="highlight">shiro-wav2raw</code></td>
+<td>将<code class="highlight"><span class="na">.wav</span><span class="w"></span></code>转换为浮点二进制大型对象的工具</td>
+<td><code class="highlight"><span class="na">.wav</span><span class="w"></span></code>文件</td>
+<td><code class="highlight"><span class="na">.raw</span><span class="w"></span></code>文件</td>
+</tr>
+<tr>
+<td><code class="highlight">shiro-xxcc</code></td>
+<td>简易倒频谱参数提取器</td>
+<td><code class="highlight"><span class="na">.raw</span><span class="w"></span></code>文件</td>
+<td>参量文件</td>
+</tr>
+<tr>
+<td><code class="highlight">shiro-fextr.lua</code></td>
+<td>特征提取器包装器</td>
+<td>目录</td>
+<td>参量文件</td>
+</tr>
+<tr>
+<td><code class="highlight">shiro-mkpm.lua</code></td>
+<td>创建音位映射的工具</td>
+<td>音位列</td>
+<td>音位映射</td>
+</tr>
+<tr>
+<td><code class="highlight">shiro-pm2md.lua</code></td>
+<td>从音位映射创建模型定义的工具</td>
+<td>音位映射</td>
+<td>模型定义</td>
+</tr>
+<tr>
+<td><code class="highlight">shiro-mkseg.lua</code></td>
+<td>从<code class="highlight"><span class="na">.csv</span><span class="w"></span></code>表创建分段文件的工具</td>
+<td><code class="highlight"><span class="na">.csv</span><span class="w"></span></code>文件</td>
+<td>分段</td>
+</tr>
+<tr>
+<td><code class="highlight">shiro-seg2lab.lua</code></td>
+<td>将分段文件转换为Audacity标签的工具</td>
+<td>分段</td>
+<td>Audacity标签文件</td>
+</tr>
+<tr>
+<td><code class="highlight">shiro-lab2seg.lua</code></td>
+<td>将Audacity标签转换为分段文件的工具</td>
+<td>Audacity标签文件, .csv索引</td>
+<td>分段</td>
+</tr>
+<tr>
+<td><code class="highlight">shiro-wavsplit.lua</code></td>
+<td>用于发声级分段的Lua脚本</td>
+<td><code class="highlight"><span class="na">.wav</span><span class="w"></span></code>文件</td>
+<td>分段、Audacity标签文件、模型</td>
+</tr>
+</tbody>
+</table>
+<p>以<code class="highlight">-h</code>参数运行以查看用法。</p>
+<h2 id="BianYi">编译<a class="headerlink" href="#BianYi" title="Permanent link">♬</a></h2>
+<p>依赖库只有<a href="https://github.com/Sleepwalking/ciglet"><code class="highlight">ciglet</code></a>和<a href="https://github.com/Sleepwalking/liblrhsmm"><code class="highlight">liblrhsmm</code></a>。你还需要lua（版本5.1或以上）或luajit。无需第三方lua库（包括已包含在<code class="highlight">external/</code>中的）。</p>
+<ul>
+<li><code class="highlight">cd</code>进<code class="highlight">ciglet</code>，运行<code class="highlight">make single-file</code>。这会在<code class="highlight">ciglet/single-file/</code>下创建<code class="highlight">ciglet.h</code>和<code class="highlight">ciglet.c</code>。将此目录复制并重命名至<code class="highlight">shiro/external/ciglet</code>。</li>
+<li>将<code class="highlight">liblrhsmm</code>放置在<code class="highlight">shiro/external/</code>下并从<code class="highlight">shiro/external/liblrhsmm/</code>运行<code class="highlight">make</code>。</li>
+<li>最后从<code class="highlight">shiro/</code>运行<code class="highlight">make</code>。</li>
+</ul>
+<p>供参考，路径结构应当类似于</p>
+<ul>
+<li><code class="highlight">shiro/external/</code><ul>
+<li><code class="highlight">ciglet/</code><ul>
+<li><code class="highlight">ciglet.h</code></li>
+<li><code class="highlight">ciglet.c</code></li>
+</ul>
+</li>
+<li><code class="highlight">liblrhsmm/</code><ul>
+<li>一堆<code class="highlight"><span class="na">.c</span><span class="w"></span></code>和<code class="highlight"><span class="na">.h</span><span class="w"></span></code></li>
+<li><code class="highlight">Makefile</code>、<code class="highlight">LICENSE</code>、<code class="highlight">readme.md</code>等等</li>
+<li><code class="highlight">external/</code>、<code class="highlight">test/</code>、<code class="highlight">build/</code></li>
+</ul>
+</li>
+<li><code class="highlight">cJSON/</code></li>
+<li><code class="highlight">dkjson.lua</code>、<code class="highlight">getopt.lua</code>等等</li>
+</ul>
+</li>
+</ul>
+<h2 id="KaiShi-ShiYong">开始使用<a class="headerlink" href="#KaiShi-ShiYong" title="Permanent link">♬</a></h2>
+<p>以下节包含基于CMU Arctic语音数据库的示例。</p>
+<h3 id="ChuangJian-MeiShiYingYu-De-MoXing-Ji-Arpabet-YinWei-DingYi">创建美式英语的模型及Arpabet音位定义<a class="headerlink" href="#ChuangJian-MeiShiYingYu-De-MoXing-Ji-Arpabet-YinWei-DingYi" title="Permanent link">♬</a></h3>
+<p>整个架构事实上与语言无关（由于音位与特征的匹配为数据驱动的）。</p>
+<p>因而，要在选定的任何语言上使用SHIRO，替换<code class="highlight">arpabet-phoneset.csv</code>为另一音素列表即可。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>lua shiro-mkpm.lua examples/arpabet-phoneset.csv <span class="se">\</span>
+  -s <span class="m">3</span> -S <span class="m">3</span> &gt; phonemap.json
+lua shiro-pm2md.lua phonemap.json <span class="se">\</span>
+  -d <span class="m">12</span> &gt; modeldef.json
+</code></pre></div></td></tr></table></div>
+<h3 id="ShiYong-XunLian-Hou-MoXing-DuiQi-YinWei-Yu-YuYin">使用训练后模型对齐音位与语音<a class="headerlink" href="#ShiYong-XunLian-Hou-MoXing-DuiQi-YinWei-Yu-YuYin" title="Permanent link">♬</a></h3>
+<p>第一步：特征提取。输入声波被下采样至16000赫兹采样率，然后带有一阶及二阶差分的12阶梅尔倒频谱系数被提取。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>lua shiro-fextr.lua index.csv <span class="se">\</span>
+  -d <span class="s2">&quot;../cmu_us_bdl_arctic/orig/&quot;</span> <span class="se">\</span>
+  -x ./extractors/extractor-xxcc-mfcc12-da-16k -r <span class="m">16000</span>
+</code></pre></div></td></tr></table></div>
+<p>第二步：从索引文件建立伪分段。
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>lua shiro-mkseg.lua index.csv <span class="se">\</span>
+  -m phonemap.json <span class="se">\</span>
+  -d <span class="s2">&quot;../cmu_us_bdl_arctic/orig/&quot;</span> <span class="se">\</span>
+  -e .param -n <span class="m">36</span> -L sil -R sil &gt; unaligned.json
+</code></pre></div></td></tr></table></div></p>
+<p>第三步：由于HSMM的搜索空间较HMM大一个数量级，从基于HMM的强制对齐开始并在缩减后搜索空间内使用HSMM更有效。运行HSMM训练时，SHIRO默认应用此缩减。虽然会减慢运行速度，但**可能仍需要增加一点搜索空间（<code class="highlight">-p 10 -d 50</code>）**以规避狭窄搜索空间引发的对齐错误。选定<code class="highlight">p</code>的经验规则为将文件中平均状态数目乘0.1。例如，若平均音频文件含有30个音位且每个音位有5个状态，<code class="highlight">p</code>应当为30 * 5 * 0.1 = 15。如果直接从HSMM进行对齐，此因子会在0.2上下。
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>./shiro-align <span class="se">\</span>
+  -m trained-model.hsmm <span class="se">\</span>
+  -s unaligned.json <span class="se">\</span>
+  -g &gt; initial-alignment.json
+./shiro-align <span class="se">\</span>
+  -m trained-model.hsmm <span class="se">\</span>
+  -s initial-alignment.json <span class="se">\</span>
+  -p <span class="m">10</span> -d <span class="m">50</span> &gt; refined-alignment.json
+</code></pre></div></td></tr></table></div></p>
+<p>最后一步：转换精校的分段为标签文件。
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>lua shiro-seg2lab.lua refined-alignment.json -t <span class="m">0</span>.005
+</code></pre></div></td></tr></table></div></p>
+<p><code class="highlight"><span class="na">.txt</span><span class="w"></span></code>标签文件将在<code class="highlight"><span class="cp">../cmu_us_bdl_arctic/orig/</span></code>下被创建。</p>
+<h3 id="YiZhi-YuYin-Yu-YinWei-ZhuanXie-XunLian-MoXing">已知语音与音位转写训练模型<a class="headerlink" href="#YiZhi-YuYin-Yu-YinWei-ZhuanXie-XunLian-MoXing" title="Permanent link">♬</a></h3>
+<p>（假定特征提取已完成）</p>
+<p>第一步：创建空模型。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>./shiro-mkhsmm -c modeldef.json &gt; empty.hsmm
+</code></pre></div></td></tr></table></div>
+<p>第二步：初始化模型（flat start初始化方案）。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>lua shiro-mkseg.lua index.csv <span class="se">\</span>
+  -m phonemap.json <span class="se">\</span>
+  -d <span class="s2">&quot;../cmu_us_bdl_arctic/orig/&quot;</span> <span class="se">\</span>
+  -e .param -n <span class="m">36</span> -L sil -R sil &gt; unaligned-segmentation.json
+./shiro-init <span class="se">\</span>
+  -m empty.hsmm <span class="se">\</span>
+  -s unaligned-segmentation.json <span class="se">\</span>
+  -FT &gt; flat.hsmm
+</code></pre></div></td></tr></table></div>
+<p>第三步：使用HMM训练算法引导/预训练并相应地更新对齐。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>./shiro-rest <span class="se">\</span>
+  -m flat.hsmm <span class="se">\</span>
+  -s unaligned-segmentation.json <span class="se">\</span>
+  -n <span class="m">5</span> -g &gt; markovian.hsmm
+./shiro-align <span class="se">\</span>
+  -m markovian.hsmm <span class="se">\</span>
+  -s unaligned-segmentation.json <span class="se">\</span>
+  -g &gt; markovian-segmentation.json
+</code></pre></div></td></tr></table></div>
+<p>最后一步：使用HSMM训练算法训练模型。
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>./shiro-rest <span class="se">\</span>
+  -m markovian.hsmm <span class="se">\</span>
+  -s markovian-segmentation.json <span class="se">\</span>
+  -n <span class="m">5</span> -p <span class="m">10</span> -d <span class="m">50</span> &gt; trained.hsmm
+</code></pre></div></td></tr></table></div></p>
+<h3 id="ShiYong-SPTK-TiDai-shiro-xxcc">使用SPTK替代shiro-xxcc<a class="headerlink" href="#ShiYong-SPTK-TiDai-shiro-xxcc" title="Permanent link">♬</a></h3>
+<p>SHIRO的特征文件与SPTK生成的二进制大型对象二进制兼容，从而允许用户试验大量<code class="highlight">shiro-xxcc</code>不支持的特征类型。使用SPTK提取MFCC的一个示例为<code class="highlight">extractors/extractor-sptk-mfcc12-da-16k.lua</code>，
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kr">return</span> <span class="kr">function</span> <span class="p">(</span><span class="n">try_excute</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">rawfile</span><span class="p">)</span>
+  <span class="kd">local</span> <span class="n">mfccfile</span> <span class="o">=</span> <span class="n">path</span> <span class="o">..</span> <span class="s2">&quot;.mfcc&quot;</span>
+  <span class="kd">local</span> <span class="n">paramfile</span> <span class="o">=</span> <span class="n">path</span> <span class="o">..</span> <span class="s2">&quot;.param&quot;</span>
+  <span class="n">try_execute</span><span class="p">(</span><span class="s2">&quot;frame -l 512 -p 80 </span><span class="se">\&quot;</span><span class="s2">&quot;</span> <span class="o">..</span> <span class="n">rawfile</span> <span class="o">..</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2"> | &quot;</span> <span class="o">..</span>
+    <span class="s2">&quot;mfcc -l 512 -m 12 -s 16 &gt; </span><span class="se">\&quot;</span><span class="s2">&quot;</span> <span class="o">..</span> <span class="n">mfccfile</span> <span class="o">..</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="n">try_execute</span><span class="p">(</span><span class="s2">&quot;delta -l 12 -d -0.5 0 0.5 -d 0.25 0 -0.5 0 0.25 </span><span class="se">\&quot;</span><span class="s2">&quot;</span> <span class="o">..</span>
+    <span class="n">mfccfile</span> <span class="o">..</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2"> &gt; </span><span class="se">\&quot;</span><span class="s2">&quot;</span> <span class="o">..</span> <span class="n">paramfile</span> <span class="o">..</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="kr">end</span>
+</code></pre></div></td></tr></table></div></p>
+<p>任何输入<code class="highlight">rawfile</code>并输出<code class="highlight"><span class="na">.param</span><span class="w"></span></code>文件的Lua文件都可以。</p>
+<p><strong>注意</strong>：即使配置相同，也不保证从<code class="highlight">shiro-xxcc</code>生成的参量匹配SPTK的结果。</p>
+<h2 id="JinJie-ZhuTi">进阶主题<a class="headerlink" href="#JinJie-ZhuTi" title="Permanent link">♬</a></h2>
+<h3 id="Ke-Tiao-Guo-YinSu">可跳过音素<a class="headerlink" href="#Ke-Tiao-Guo-YinSu" title="Permanent link">♬</a></h3>
+<p>在特定情况下在语音及其音素转写间可能存在轻微不匹配。最常见的情况之一为在单词或词组间插入停顿。要纠正此不匹配，可以在每个单词及词组边界处加入一个停顿音素（例如Arpabet中的“pau”），并通过在音位映射中指定0与1之间的跳过概率使此音素可跳过，</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;pau&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;pskip&quot;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;states&quot;</span><span class="p">:[{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;dur&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;out&quot;</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">},{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;dur&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;out&quot;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">},{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;dur&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;out&quot;</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">},{</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+此后一旦其出现在分段文件中，<code class="highlight">shiro-mkseg.lua</code>将穿越音位“pau”中全部状态加入跳过过渡。跳过过渡可被可视化为，</p>
+<p><img alt="" src="https://user-images.githubusercontent.com/4531595/28725904-9e71645a-7384-11e7-89b4-188e0cc38b96.png" /></p>
+<h3 id="Ke-TiDai-YinWei-Nei-TuoPu">可替代音位内拓扑<a class="headerlink" href="#Ke-TiDai-YinWei-Nei-TuoPu" title="Permanent link">♬</a></h3>
+<p>单一音位内的状态亦可通过拓扑指定跳过，如，
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;pau&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;topology&quot;</span><span class="p">:</span><span class="s2">&quot;type-b&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;states&quot;</span><span class="p">:[{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;dur&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;out&quot;</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">},{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;dur&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;out&quot;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">},{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;dur&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;out&quot;</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">},{</span><span class="w"></span>
+</code></pre></div></td></tr></table></div></p>
+<p>默认拓扑为*type-a*，即完全不存在跳过，在大多数情况下此选项运行良好。</p>
+<p>其他选项包括</p>
+<ul>
+<li><em>type-b</em>
+  <img alt="type-b" src="https://user-images.githubusercontent.com/4531595/28726021-11d72560-7385-11e7-9451-547a12f5eae0.png" /></li>
+<li><em>type-c</em>
+  <img alt="type-c" src="https://user-images.githubusercontent.com/4531595/28726026-139d4280-7385-11e7-9f5a-5da57cf37267.png" /></li>
+<li><em>skip-boundary</em>
+  <img alt="skip-boundary" src="https://user-images.githubusercontent.com/4531595/28726028-16948ea8-7385-11e7-972d-84350437eaff.png" /></li>
+</ul>
+<h3 id="DAEM-XunLian">DAEM训练<a class="headerlink" href="#DAEM-XunLian" title="Permanent link">♬</a></h3>
+<p>DAEM（<s>DorAEMon</s> Deterministic Annealing Expectation-Maximization，确定性退火最大期望算法）是一个修改版本的标准HSMM训练算法。在DAEM训练中，对数概率根据一个在循环中从0逐渐收敛至1的温度系数缩放。据文献报告，DAEM提升flat-start训练HMM语音识别系统的准确性。</p>
+<p>要为<code class="highlight">shiro-rest</code>启用DAEM，只需增加<code class="highlight">-D</code>选项。显示的对数相似度将按照温度被调整。</p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2022-05-18T00:55:50+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2022-05-18</span>
+      
+    
+  </small>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            隋卞 et al.，在<a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode.zh-Hans" target="_blank">知识共享许可协议—署名—相同方式共享 4.0 协议国际版</a>下发布
+          </div>
+        
+        使用
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+	部署
+      </div>
+      <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/SuibianP" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://qm.qq.com/cgi-bin/qm/qr?k=mJazCWZGab4flBhFeyEGVCwi6fD0eZMh&noverify=0" target="_blank" rel="noopener" title="qm.qq.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M433.754 420.445c-11.526 1.393-44.86-52.741-44.86-52.741 0 31.345-16.136 72.247-51.051 101.786 16.842 5.192 54.843 19.167 45.803 34.421-7.316 12.343-125.51 7.881-159.632 4.037-34.122 3.844-152.316 8.306-159.632-4.037-9.045-15.25 28.918-29.214 45.783-34.415-34.92-29.539-51.059-70.445-51.059-101.792 0 0-33.334 54.134-44.859 52.741-5.37-.65-12.424-29.644 9.347-99.704 10.261-33.024 21.995-60.478 40.144-105.779C60.683 98.063 108.982.006 224 0c113.737.006 163.156 96.133 160.264 214.963 18.118 45.223 29.912 72.85 40.144 105.778 21.768 70.06 14.716 99.053 9.346 99.704z"/></svg>
+    </a>
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs", "navigation.instant", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  </body>
+</html>

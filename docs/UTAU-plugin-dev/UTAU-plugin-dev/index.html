@@ -1,0 +1,2338 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="UTAU相关各种文档的简体中文翻译堆积处。">
+      
+      
+        <meta name="author" content="隋卞">
+      
+      
+      <link rel="icon" href="../../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>UTAU插件开发方法 - utau-zh-docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#UTAU-ChaJian-KaiFaFangFa" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+<a href="https://github.com/SuibianP/utau-zh-docs/issues/new" target="_blank">issue</a>大欢迎！<a href="https://github.com/SuibianP/utau-zh-docs/compare" target="_blank">pull request</a>大欢迎！乌拉！
+
+          </div>
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="utau-zh-docs" class="md-header__button md-logo" aria-label="utau-zh-docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.ico" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            utau-zh-docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UTAU插件开发方法
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SuibianP/utau-zh-docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SuibianP/utau-zh-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        首页
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../SHIRO-readme/SHIRO-readme/" class="md-tabs__link md-tabs__link--active">
+        文档
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="utau-zh-docs" class="md-nav__button md-logo" aria-label="utau-zh-docs" data-md-component="logo">
+      
+  <img src="../../../images/favicon.ico" alt="logo">
+
+    </a>
+    utau-zh-docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SuibianP/utau-zh-docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SuibianP/utau-zh-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          首页
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="首页" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          首页
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        文档列表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTORS/" class="md-nav__link">
+        鸣谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTING/" class="md-nav__link">
+        帮帮我！【雾
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          文档
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="文档" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          文档
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SHIRO-readme/SHIRO-readme/" class="md-nav__link">
+        SHIRO自述文档
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../presamp-ini-spec/presamp-ini-spec/" class="md-nav__link">
+        presamp.ini说明文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          UTAU插件开发方法
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        UTAU插件开发方法
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#XuYan" class="md-nav__link">
+    序言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#JiBen-XinXi" class="md-nav__link">
+    基本信息
+  </a>
+  
+    <nav class="md-nav" aria-label="基本信息">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ChaJian-De-XingShi" class="md-nav__link">
+    插件的形式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugin-txt-De-GeShi" class="md-nav__link">
+    plugin.txt的格式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-txt-De-GeShi" class="md-nav__link">
+    install.txt的格式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#WenJianJia-GouCheng" class="md-nav__link">
+    文件夹构成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ShuJu-ShuRuShuChu-FangFa" class="md-nav__link">
+    数据输入输出方法
+  </a>
+  
+    <nav class="md-nav" aria-label="数据输入输出方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ShuRu" class="md-nav__link">
+    输入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ShuChu" class="md-nav__link">
+    输出
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ShuJuGeShi" class="md-nav__link">
+    数据格式
+  </a>
+  
+    <nav class="md-nav" aria-label="数据格式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Jie" class="md-nav__link">
+    节
+  </a>
+  
+    <nav class="md-nav" aria-label="节">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#SETTING" class="md-nav__link">
+    [#SETTING]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-ShuZi-" class="md-nav__link">
+    [#数字]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#PREV-NEXT" class="md-nav__link">
+    [#PREV], [#NEXT]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#INSERT" class="md-nav__link">
+    [#INSERT]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#DELETE" class="md-nav__link">
+    [#DELETE]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VERSION" class="md-nav__link">
+    [#VERSION]
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#TiaoMu" class="md-nav__link">
+    条目
+  </a>
+  
+    <nav class="md-nav" aria-label="条目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#YiDing-CunZai-De-TiaoMu" class="md-nav__link">
+    一定存在的条目
+  </a>
+  
+    <nav class="md-nav" aria-label="一定存在的条目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Length-YinFu-De-ChangDu" class="md-nav__link">
+    Length　音符的长度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Lyric-Ci" class="md-nav__link">
+    Lyric　词
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#NoteNum-YinJie-BianHao" class="md-nav__link">
+    NoteNum　音阶编号
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#PreUtterance-XianXing-FaSheng" class="md-nav__link">
+    PreUtterance　先行发声
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#You-KeNeng-Bei-ShengLve-De-TiaoMu" class="md-nav__link">
+    有可能被省略的条目
+  </a>
+  
+    <nav class="md-nav" aria-label="有可能被省略的条目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#VoiceOverlap-ChongDie-BuFen" class="md-nav__link">
+    VoiceOverlap　重叠部分
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Intensity-Yin-De-QiangDu" class="md-nav__link">
+    Intensity　音的强度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Moduration-YiDiao" class="md-nav__link">
+    Moduration　移调
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#StartPoint-STP" class="md-nav__link">
+    StartPoint　STP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Envelope-BaoLuo" class="md-nav__link">
+    Envelope　包络
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tempo-QuSu" class="md-nav__link">
+    Tempo　曲速
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Velocity-ZiYin-SuDu" class="md-nav__link">
+    Velocity　子音速度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Label-BiaoQian" class="md-nav__link">
+    Label　标签
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direct-ZhiJie-ShuChu" class="md-nav__link">
+    $direct　直接输出
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patch-wav-WenJian-ZhiJie-ShuChu" class="md-nav__link">
+    $patch　wav文件直接输出
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#region-XuanZe-FanWei-De-KaiShi" class="md-nav__link">
+    $region　选择范围的开始
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#region-end-XuanZe-FanWei-De-ZhongZhi" class="md-nav__link">
+    $region_end　选择范围的终止
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ZhiDu-TiaoMu" class="md-nav__link">
+    只读条目
+  </a>
+  
+    <nav class="md-nav" aria-label="只读条目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preuttr-ZiDong-TiaoZheng-WanCheng-De-XianXing-FaSheng" class="md-nav__link">
+    @preuttr　自动调整完成的先行发声
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overlap-ZiDong-TiaoZheng-WanCheng-De-ChongDie-BuFen" class="md-nav__link">
+    @overlap　自动调整完成的重叠部分
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stpoint-ZiDong-TiaoZheng-WanCheng-De-STP" class="md-nav__link">
+    @stpoint　自动调整完成的STP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filename-XuanRan-ShiYong-WenJianMing" class="md-nav__link">
+    @filename　渲染使用文件名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alias-BieMing" class="md-nav__link">
+    @alias　别名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-HuanCun-WenJianMing" class="md-nav__link">
+    @cache　缓存文件名
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#YinDiao-MoShi-1" class="md-nav__link">
+    音调（模式1）
+  </a>
+  
+    <nav class="md-nav" aria-label="音调（模式1）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#PBType-HuaYin-LeiXing" class="md-nav__link">
+    PBType　滑音类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Piches-YinDiao-ShuLie" class="md-nav__link">
+    Piches　音调数列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#PBStart-YinDiao-ShuLie-KaiShi-WeiZhi" class="md-nav__link">
+    PBStart　音调数列开始位置
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#YinDiao-MoShi-2" class="md-nav__link">
+    音调（模式2）
+  </a>
+  
+    <nav class="md-nav" aria-label="音调（模式2）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#PBS-YinGao-QuXian-ZuiChu-Dian" class="md-nav__link">
+    PBS　音高曲线最初点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#PBW-YinGao-Dian-JianGe" class="md-nav__link">
+    PBW　音高点间隔
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#PBY-Chu-ZuiChu-DianWai-De-YinGao-Dian-YiDong-Zhi" class="md-nav__link">
+    PBY　除最初点外的音高点移动值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#PBM-YinGao-QuXian-De-XingZhuang" class="md-nav__link">
+    PBM　音高曲线的形状
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VBR-ChanYin" class="md-nav__link">
+    VBR　颤音
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Flags" class="md-nav__link">
+    Flags
+  </a>
+  
+    <nav class="md-nav" aria-label="Flags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b-Bu-TongGuo-GongZhen-Feng-XiuZheng-De-BRE" class="md-nav__link">
+    b　不通过共振峰修正的BRE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#B-BRE" class="md-nav__link">
+    B　BRE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-DiTongLvBoQi-GongZhen-Feng-XiuZheng-Qian-" class="md-nav__link">
+    c　低通滤波器（共振峰修正前）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#C-DiTongLvBoQi-1" class="md-nav__link">
+    C　低通滤波器1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#D-DiTongLvBoQi-2" class="md-nav__link">
+    D　低通滤波器2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#E-DiTongLvBoQi-3" class="md-nav__link">
+    E　低通滤波器3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#F-GongZhen-Feng-XiuZheng-ShiYong-PinLv-FanWei-YinGao-JiZhun-" class="md-nav__link">
+    F　共振峰修正适用频率范围（音高基准）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g-JianYi-XingBie-CanShu" class="md-nav__link">
+    g　简易性别参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#G-PinLv-BiaoZai-ShengCheng" class="md-nav__link">
+    G　频率表再生成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h-DiTongLvBoQi-4-BRE-YiWai-" class="md-nav__link">
+    h　低通滤波器4（BRE以外）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#H-DiTongLvBoQi-4" class="md-nav__link">
+    H　低通滤波器4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#L-GongZhen-Feng-XiuZheng-ShiYong-PinLv-FanWei-PinLv-JiZhun-" class="md-nav__link">
+    L　共振峰修正适用频率范围（频率基准）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#N-Wu-GongZhen-Feng-LvBoQi" class="md-nav__link">
+    N　无共振峰滤波器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#P-BoFeng-YaSuoQi-QiangDu" class="md-nav__link">
+    P　波峰压缩器强度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#R-TIPS-YinQing-Yong-CanShu-WenJian-Zai-ShengCheng" class="md-nav__link">
+    R　TIPS引擎用参数文件再生成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t-Yi-10-Yin-FenWei-DanWei-YiDong-YinCheng" class="md-nav__link">
+    t　以10音分为单位移动音程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#T-Yi-WenBen-ShuChu-PinLv-Biao" class="md-nav__link">
+    T　以文本输出频率表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#W-JiQiRen-Sheng-ShengCheng" class="md-nav__link">
+    W　机器人声生成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Y-ShenSuo-FanWei-De-BRE-BiLi" class="md-nav__link">
+    Y　伸缩范围的BRE比例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-QieHuan-Wei-GaoSuHua-PiChuLi-Yong-YinQing" class="md-nav__link">
+    /　切换为高速化批处理用引擎
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ZiDingYi-TiaoMu" class="md-nav__link">
+    自定义条目
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setParam-plugin-dev/setParam-plugin-dev/" class="md-nav__link">
+        关于setParam插件的开发方法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rentan-info/rentan-info/" class="md-nav__link">
+        整体录制单独音（连单风单独音）的解说
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../doppeltler_readme_zh/doppeltler_readme_zh/" class="md-nav__link">
+        doppeltler自述文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UTAU-english-phoneme-list/UTAU-english-phoneme-list/" class="md-nav__link">
+        UTAU英语音源音素对应表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1_oto%E6%9D%A1%E7%9B%AE%E5%88%B0%E5%BA%95%E5%8C%85%E5%90%AB%E4%BA%86%E4%BB%80%E4%B9%88/%E5%8E%9F%E9%9F%B3%E8%AE%BE%E5%AE%9A1/" class="md-nav__link">
+        闪闪的原音设定碎碎念1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UTAU-batchfile-analyze/UTAU-batchfile-analyze/" class="md-nav__link">
+        UTAU 渲染脚本
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fuck-utau/fuck-utau/" class="md-nav__link">
+        【吐槽向】论UTAU设计之烂
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utau_pitch_string/utau-pitch-analysis/" class="md-nav__link">
+        UTAU Pitch字符串解码
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#XuYan" class="md-nav__link">
+    序言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#JiBen-XinXi" class="md-nav__link">
+    基本信息
+  </a>
+  
+    <nav class="md-nav" aria-label="基本信息">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ChaJian-De-XingShi" class="md-nav__link">
+    插件的形式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugin-txt-De-GeShi" class="md-nav__link">
+    plugin.txt的格式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-txt-De-GeShi" class="md-nav__link">
+    install.txt的格式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#WenJianJia-GouCheng" class="md-nav__link">
+    文件夹构成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ShuJu-ShuRuShuChu-FangFa" class="md-nav__link">
+    数据输入输出方法
+  </a>
+  
+    <nav class="md-nav" aria-label="数据输入输出方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ShuRu" class="md-nav__link">
+    输入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ShuChu" class="md-nav__link">
+    输出
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ShuJuGeShi" class="md-nav__link">
+    数据格式
+  </a>
+  
+    <nav class="md-nav" aria-label="数据格式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Jie" class="md-nav__link">
+    节
+  </a>
+  
+    <nav class="md-nav" aria-label="节">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#SETTING" class="md-nav__link">
+    [#SETTING]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-ShuZi-" class="md-nav__link">
+    [#数字]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#PREV-NEXT" class="md-nav__link">
+    [#PREV], [#NEXT]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#INSERT" class="md-nav__link">
+    [#INSERT]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#DELETE" class="md-nav__link">
+    [#DELETE]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VERSION" class="md-nav__link">
+    [#VERSION]
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#TiaoMu" class="md-nav__link">
+    条目
+  </a>
+  
+    <nav class="md-nav" aria-label="条目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#YiDing-CunZai-De-TiaoMu" class="md-nav__link">
+    一定存在的条目
+  </a>
+  
+    <nav class="md-nav" aria-label="一定存在的条目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#Length-YinFu-De-ChangDu" class="md-nav__link">
+    Length　音符的长度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Lyric-Ci" class="md-nav__link">
+    Lyric　词
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#NoteNum-YinJie-BianHao" class="md-nav__link">
+    NoteNum　音阶编号
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#PreUtterance-XianXing-FaSheng" class="md-nav__link">
+    PreUtterance　先行发声
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#You-KeNeng-Bei-ShengLve-De-TiaoMu" class="md-nav__link">
+    有可能被省略的条目
+  </a>
+  
+    <nav class="md-nav" aria-label="有可能被省略的条目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#VoiceOverlap-ChongDie-BuFen" class="md-nav__link">
+    VoiceOverlap　重叠部分
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Intensity-Yin-De-QiangDu" class="md-nav__link">
+    Intensity　音的强度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Moduration-YiDiao" class="md-nav__link">
+    Moduration　移调
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#StartPoint-STP" class="md-nav__link">
+    StartPoint　STP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Envelope-BaoLuo" class="md-nav__link">
+    Envelope　包络
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Tempo-QuSu" class="md-nav__link">
+    Tempo　曲速
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Velocity-ZiYin-SuDu" class="md-nav__link">
+    Velocity　子音速度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Label-BiaoQian" class="md-nav__link">
+    Label　标签
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direct-ZhiJie-ShuChu" class="md-nav__link">
+    $direct　直接输出
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patch-wav-WenJian-ZhiJie-ShuChu" class="md-nav__link">
+    $patch　wav文件直接输出
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#region-XuanZe-FanWei-De-KaiShi" class="md-nav__link">
+    $region　选择范围的开始
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#region-end-XuanZe-FanWei-De-ZhongZhi" class="md-nav__link">
+    $region_end　选择范围的终止
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ZhiDu-TiaoMu" class="md-nav__link">
+    只读条目
+  </a>
+  
+    <nav class="md-nav" aria-label="只读条目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preuttr-ZiDong-TiaoZheng-WanCheng-De-XianXing-FaSheng" class="md-nav__link">
+    @preuttr　自动调整完成的先行发声
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overlap-ZiDong-TiaoZheng-WanCheng-De-ChongDie-BuFen" class="md-nav__link">
+    @overlap　自动调整完成的重叠部分
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stpoint-ZiDong-TiaoZheng-WanCheng-De-STP" class="md-nav__link">
+    @stpoint　自动调整完成的STP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filename-XuanRan-ShiYong-WenJianMing" class="md-nav__link">
+    @filename　渲染使用文件名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alias-BieMing" class="md-nav__link">
+    @alias　别名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-HuanCun-WenJianMing" class="md-nav__link">
+    @cache　缓存文件名
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#YinDiao-MoShi-1" class="md-nav__link">
+    音调（模式1）
+  </a>
+  
+    <nav class="md-nav" aria-label="音调（模式1）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#PBType-HuaYin-LeiXing" class="md-nav__link">
+    PBType　滑音类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Piches-YinDiao-ShuLie" class="md-nav__link">
+    Piches　音调数列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#PBStart-YinDiao-ShuLie-KaiShi-WeiZhi" class="md-nav__link">
+    PBStart　音调数列开始位置
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#YinDiao-MoShi-2" class="md-nav__link">
+    音调（模式2）
+  </a>
+  
+    <nav class="md-nav" aria-label="音调（模式2）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#PBS-YinGao-QuXian-ZuiChu-Dian" class="md-nav__link">
+    PBS　音高曲线最初点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#PBW-YinGao-Dian-JianGe" class="md-nav__link">
+    PBW　音高点间隔
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#PBY-Chu-ZuiChu-DianWai-De-YinGao-Dian-YiDong-Zhi" class="md-nav__link">
+    PBY　除最初点外的音高点移动值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#PBM-YinGao-QuXian-De-XingZhuang" class="md-nav__link">
+    PBM　音高曲线的形状
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#VBR-ChanYin" class="md-nav__link">
+    VBR　颤音
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Flags" class="md-nav__link">
+    Flags
+  </a>
+  
+    <nav class="md-nav" aria-label="Flags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b-Bu-TongGuo-GongZhen-Feng-XiuZheng-De-BRE" class="md-nav__link">
+    b　不通过共振峰修正的BRE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#B-BRE" class="md-nav__link">
+    B　BRE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-DiTongLvBoQi-GongZhen-Feng-XiuZheng-Qian-" class="md-nav__link">
+    c　低通滤波器（共振峰修正前）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#C-DiTongLvBoQi-1" class="md-nav__link">
+    C　低通滤波器1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#D-DiTongLvBoQi-2" class="md-nav__link">
+    D　低通滤波器2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#E-DiTongLvBoQi-3" class="md-nav__link">
+    E　低通滤波器3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#F-GongZhen-Feng-XiuZheng-ShiYong-PinLv-FanWei-YinGao-JiZhun-" class="md-nav__link">
+    F　共振峰修正适用频率范围（音高基准）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g-JianYi-XingBie-CanShu" class="md-nav__link">
+    g　简易性别参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#G-PinLv-BiaoZai-ShengCheng" class="md-nav__link">
+    G　频率表再生成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h-DiTongLvBoQi-4-BRE-YiWai-" class="md-nav__link">
+    h　低通滤波器4（BRE以外）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#H-DiTongLvBoQi-4" class="md-nav__link">
+    H　低通滤波器4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#L-GongZhen-Feng-XiuZheng-ShiYong-PinLv-FanWei-PinLv-JiZhun-" class="md-nav__link">
+    L　共振峰修正适用频率范围（频率基准）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#N-Wu-GongZhen-Feng-LvBoQi" class="md-nav__link">
+    N　无共振峰滤波器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#P-BoFeng-YaSuoQi-QiangDu" class="md-nav__link">
+    P　波峰压缩器强度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#R-TIPS-YinQing-Yong-CanShu-WenJian-Zai-ShengCheng" class="md-nav__link">
+    R　TIPS引擎用参数文件再生成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t-Yi-10-Yin-FenWei-DanWei-YiDong-YinCheng" class="md-nav__link">
+    t　以10音分为单位移动音程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#T-Yi-WenBen-ShuChu-PinLv-Biao" class="md-nav__link">
+    T　以文本输出频率表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#W-JiQiRen-Sheng-ShengCheng" class="md-nav__link">
+    W　机器人声生成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#Y-ShenSuo-FanWei-De-BRE-BiLi" class="md-nav__link">
+    Y　伸缩范围的BRE比例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-QieHuan-Wei-GaoSuHua-PiChuLi-Yong-YinQing" class="md-nav__link">
+    /　切换为高速化批处理用引擎
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ZiDingYi-TiaoMu" class="md-nav__link">
+    自定义条目
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/SuibianP/utau-zh-docs/edit/master/docs/docs/UTAU-plugin-dev/UTAU-plugin-dev.md" title="编辑此页" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="UTAU-ChaJian-KaiFaFangFa">UTAU插件开发方法<a class="headerlink" href="#UTAU-ChaJian-KaiFaFangFa" title="Permanent link">♬</a></h1>
+<p><a href="https://w.atwiki.jp/utaou/pages/64.html">原文链接（日语）</a> 作者：<a href="https://w.atwiki.jp/utaou/">UTAU ユーザー互助会@ ウィキ</a></p>
+<hr />
+<h2 id="XuYan">序言<a class="headerlink" href="#XuYan" title="Permanent link">♬</a></h2>
+<p>此篇文章将会详细记述UTAU的插件功能的开发方法。</p>
+<p>安装的方法和已制成插件的一览等，请参考<a href="https://w.atwiki.jp/utaou/pages/36.html">UTAU用插件</a>页面。</p>
+<p>并且，还含有对目前在其他地方都没有提及的条目的说明。</p>
+<p>因此，也混杂有不确定的信息。请知悉。</p>
+<p>详细的调查可使用UTAU Ver 0.2.76进行。</p>
+<ul>
+<li><a href="#序言">序言</a></li>
+<li><a href="#基本信息">基本信息</a></li>
+<li><a href="#插件的形式">插件的形式</a><ul>
+<li>plugin.txt的格式</li>
+<li>install.txt的格式</li>
+<li>文件夹构成</li>
+</ul>
+</li>
+<li><a href="#数据输入输出方法">数据输入输出方法</a><ul>
+<li>输入</li>
+<li>输出</li>
+</ul>
+</li>
+<li><a href="#数据格式">数据格式</a></li>
+<li><a href="#节">节</a><ul>
+<li>[#SETTING]</li>
+<li>[#数字]</li>
+<li>[#PREV],[#NEXT]</li>
+<li>[#INSERT]</li>
+<li>[#DELETE]</li>
+<li>[#VERSION]</li>
+</ul>
+</li>
+<li><a href="#条目">条目</a><ul>
+<li><a href="#一定存在的条目">一定存在的条目</a></li>
+<li>Length 音符的长度</li>
+<li>Lyric 歌词</li>
+<li>NoteNum 音阶编号</li>
+<li>PreUtterance 先行发声</li>
+<li><a href="#有可能被省略的条目">有可能被省略的条目</a></li>
+<li>VoiceOverlap 重叠部分</li>
+<li>Intensity 音符强度</li>
+<li>Modulation 移调</li>
+<li>StartPoint STP</li>
+<li>Envelope 包络</li>
+<li>Tempo 曲速</li>
+<li>Velocity 辅音速度</li>
+<li>Label 标签</li>
+<li>$direct 直接输出</li>
+<li>$patch wav文件直接输出</li>
+<li>$region 选择范围的开始</li>
+<li>$region_end 选择范围的结束</li>
+<li><a href="#只读条目">只读条目</a></li>
+<li>@preuttr 自动调整完成的先行发声</li>
+<li>@overlap 自动调整完成的重叠部分</li>
+<li>@stpoint 自动调整完成的STP</li>
+<li>@filename 渲染使用的文件名</li>
+<li>@alias 别名</li>
+<li>@cache 缓存文件名</li>
+<li><a href="#音调（模式1）">音调（模式1）</a></li>
+<li>PBType 滑音类型</li>
+<li>Piches 音高数列</li>
+<li>PBStart 音高数列开始位置</li>
+<li><a href="#音调（模式2）">音调（模式2）</a></li>
+<li>PBS 音高曲线最初点</li>
+<li>PBW 音高点间隔</li>
+<li>PBY 除最初点外的音高点移动值</li>
+<li>PBM 音高曲线的形状</li>
+<li>VBR 颤音</li>
+<li><a href="#Flags">Flags</a></li>
+<li>b 不通过共振峰修正的BRE</li>
+<li>B BRE</li>
+<li>c 低通滤波器（共振峰修正前）</li>
+<li>C 低通滤波器1</li>
+<li>D 低通滤波器2</li>
+<li>E 低通滤波器3</li>
+<li>F 共振峰修正适用频率范围（音高基准）</li>
+<li>g 简易性别参数</li>
+<li>G 频率表再生成</li>
+<li>h 低通滤波器4（BRE以外）</li>
+<li>H 低通滤波器4</li>
+<li>L 共振峰修正适用频率范围（频率基准）</li>
+<li>N 无共振峰滤波器</li>
+<li>P 波峰压缩器强度</li>
+<li>R TIPS引擎用参数文件再生成</li>
+<li>t 以10音分为单位移动音程</li>
+<li>T 以文本输出频率表</li>
+<li>W 机器人声生成</li>
+<li>Y 伸缩范围的BRE比例</li>
+<li>/ 切换为高速化批处理用引擎</li>
+<li>自定义条目</li>
+</ul>
+</li>
+<li>参考链接</li>
+</ul>
+<h2 id="JiBen-XinXi">基本信息<a class="headerlink" href="#JiBen-XinXi" title="Permanent link">♬</a></h2>
+<h3 id="ChaJian-De-XingShi">插件的形式<a class="headerlink" href="#ChaJian-De-XingShi" title="Permanent link">♬</a></h3>
+<p>对于插件，最少需要以下两个文件。</p>
+<p>plugin.txt 设定文件</p>
+<p>[可执行文件] 插件本体</p>
+<p>可执行文件必须能够获取命令行调用参数。</p>
+<p>并且，如果准备名为install.txt的文件，将使插件的安装变得容易。</p>
+<p>除此之外，含有其他文件也没有关系。</p>
+<p>例如：readme.txt</p>
+<h3 id="plugin-txt-De-GeShi"><code class="highlight">plugin.txt</code>的格式<a class="headerlink" href="#plugin-txt-De-GeShi" title="Permanent link">♬</a></h3>
+<p><code class="highlight">plugin.txt</code>按照以下形式记述。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>name=plugintest
+execute=test.exe
+shell=use
+ustversion=scriptversion
+notes=all
+</code></pre></div></td></tr></table></div>
+<p>在<code class="highlight">name</code>后记录有在UTAU菜单中显示的插件的名称。</p>
+<p>在<code class="highlight">execute</code>后记录有可执行文件的名称。</p>
+<p>通常会用<code class="highlight">CreateProcess</code>来启动插件，但在指定有<code class="highlight">shell=use</code>的情况下会用<code class="highlight">ShellExecuteEx</code>来启动插件。因此，也能够执行exe以外的文件（jar、html、hta等）。</p>
+<p><code class="highlight">ustversion是UTAU0.4.15以后追加的条目。指定了插件脚本的版本。截至目前可指定</code>ustversion=1.00<code class="highlight">（相当于UTAU0.2.76）、</code>ustversion=1.10<code class="highlight">（Mode1用音高序列移至</code>Pitches<code class="highlight">条目）、</code>ustversion=1.20<code class="highlight">（移调改为</code>Modulation<code class="highlight">，Mode1用音高序列移至</code>PitchBend`条目）中任意一个。省略时UTAU本体的设定会被使用。</p>
+<p><code class="highlight">notes</code>是UTAU0.4.15以后追加的条目。在指定此项时，将无视选择范围传递全部音符。省略时仅传递选择范围。</p>
+<h3 id="install-txt-De-GeShi"><code class="highlight">install.txt</code>的格式<a class="headerlink" href="#install-txt-De-GeShi" title="Permanent link">♬</a></h3>
+<p><code class="highlight">install.txt</code>是仅在插件安装时被使用的特别的文件。
+如果事先做好恰当的准备，就只需将以<code class="highlight">zip</code>格式压缩的插件文件拖放至UTAU中，即可自动安装。
+即使没有此文件，对插件自身的功能也没有影响。</p>
+<p>在插件中，<code class="highlight">install.txt</code>记述如下内容。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>type=editplugin
+folder=bar
+contentsdir=foo
+description=说明
+</code></pre></div></td></tr></table></div>
+<p><code class="highlight">type</code>：若为插件应写作<code class="highlight">editplugin</code>。
+<code class="highlight">folder</code>：在<code class="highlight">plugin</code>下创建的文件夹名。不可省略。
+<code class="highlight">contentsdir</code>：解压的文件夹名。若省略则变为与<code class="highlight">folder</code>相同。
+<code class="highlight">description</code>：可以省略。用一行来写插件的说明。</p>
+<h3 id="WenJianJia-GouCheng">文件夹构成<a class="headerlink" href="#WenJianJia-GouCheng" title="Permanent link">♬</a></h3>
+<p>在使用<code class="highlight">install.txt</code>的情况下，需要按如下形式来配布。</p>
+<p><code class="highlight">爱啥啥.uar</code></p>
+<p>├<code class="highlight">install.txt</code></p>
+<p>└foo（文件夹）</p>
+<p>├<code class="highlight">plugin.txt</code></p>
+<p>├【可执行文件】</p>
+<p>└其他文件（若有）</p>
+<p><code class="highlight">uar</code>是UTAU安装档案专用的扩展名，实际上是变更了扩展名的zip压缩文件。</p>
+<p>即使把扩展名保留为zip也能够安装。</p>
+<p>请将记作foo的部分替换为在<code class="highlight">install.txt</code>的<code class="highlight">contentsdir</code>（若没有则为<code class="highlight">folder</code>）中填写的文件名。</p>
+<p>在不使用<code class="highlight">install.txt</code>的时候，必须用手动复制到<code class="highlight">plugins</code>文件夹下等方式安装。</p>
+<p><code class="highlight">install.txt</code>如上记述时，安装后将变为如下所示。</p>
+<p>UTAU安装目录</p>
+<p>├<code class="highlight">utau.exe</code></p>
+<p>├<code class="highlight">plugins</code></p>
+<p>│　└bar</p>
+<p>│　　├<code class="highlight">plugin.txt</code></p>
+<p>│　　├【可执行文件】</p>
+<p>│　　└其他文件（若有）</p>
+<p>└其他UTAU相关文件</p>
+<h2 id="ShuJu-ShuRuShuChu-FangFa">数据输入输出方法<a class="headerlink" href="#ShuJu-ShuRuShuChu-FangFa" title="Permanent link">♬</a></h2>
+<h3 id="ShuRu">输入<a class="headerlink" href="#ShuRu" title="Permanent link">♬</a></h3>
+<p>UTAU本体会将选择范围的信息用临时文件输出后，将该文件路径通过插件的命令行调用参数传递。</p>
+<p>插件通过读取该文件来获取音符信息。</p>
+<h3 id="ShuChu">输出<a class="headerlink" href="#ShuChu" title="Permanent link">♬</a></h3>
+<p>插件在编辑选择范围的信息后，将结果覆盖输入的临时文件。</p>
+<h2 id="ShuJuGeShi">数据格式<a class="headerlink" href="#ShuJuGeShi" title="Permanent link">♬</a></h2>
+<p>从UTAU传递的临时文件是由多个名为节的单位构成的文本格式。</p>
+<p>文字编码为ShiftJIS，换行为CR+LF.</p>
+<p>节内有存储音符的详细信息的被称作条目的东西。</p>
+<h3 id="Jie">节<a class="headerlink" href="#Jie" title="Permanent link">♬</a></h3>
+<p>指从[#●]开始直到下一个[#●]之前为止中间的部分。</p>
+<p>基本上，一个节对应一个音符。</p>
+<p>节有几个种类，各自的作用不同。</p>
+<h4 id="SETTING">[#SETTING]<a class="headerlink" href="#SETTING" title="Permanent link">♬</a></h4>
+<p>是存在于临时文件的最前面的节，记载有基本设定。</p>
+<p>作为只读，即使变更对于本体侧的信息也不会有任何改变。</p>
+<p>输出时，省略也没关系。</p>
+<p><code class="highlight">Tempo</code> 曲速
+<code class="highlight">VoiceDir</code> 音源文件夹
+<code class="highlight">CacheDir</code> 缓存文件夹
+<code class="highlight">UstVersion</code> 插件用临时文件的版本（针对UTAU Ver.0.4以后，仅在开启设定的“以旧形式条目输出UST文件和插件脚本”时存在）</p>
+<h4 id="-ShuZi-">[#数字]<a class="headerlink" href="#-ShuZi-" title="Permanent link">♬</a></h4>
+<p>是记载选择范围的信息的节。</p>
+<p>此节不能省略。</p>
+<p>作为例外，插件操作被其本身取消时，可以省略任何节。</p>
+<p>而且，节的数字没有意义，会根据输出顺序应用于本体的选择范围。</p>
+<h4 id="PREV-NEXT"><code class="highlight">[#PREV]</code>, <code class="highlight">[#<span class="k">NEXT</span>]</code><a class="headerlink" href="#PREV-NEXT" title="Permanent link">♬</a></h4>
+<p><code class="highlight">[#PREV]</code>存储选择范围前一音符的数据。</p>
+<p><code class="highlight">[#<span class="k">NEXT</span>]</code>中存有选择范围后一音符的数据。</p>
+<p>若无前后音符，则没有此节。</p>
+<p>输出时，省略也没关系，但如果不省略，就会反映出信息。</p>
+<p>并且输出时，未必一定要写在紧邻数字节的前后。</p>
+<h4 id="INSERT"><code class="highlight">[#INSERT]</code><a class="headerlink" href="#INSERT" title="Permanent link">♬</a></h4>
+<p>是在输出时才能够使用的特别的节。</p>
+<p>在它被写的位置追加音符。</p>
+<p>因为被当作数字节的一种，所以即使写在<code class="highlight">[#PREV]</code>前或<code class="highlight">[#<span class="k">NEXT</span>]</code>后，也不会在选择范围以外的位置追加音符。</p>
+<p>并且，在选择范围后没有音符且选择范围末尾追加此节的情况下，若未恰当的指定Length，将产生长度0的音符，请注意。</p>
+<h4 id="DELETE">[#DELETE]<a class="headerlink" href="#DELETE" title="Permanent link">♬</a></h4>
+<p>是在输出时才能够使用的特别的节。</p>
+<p>若以此替换数字节，会删除该音符。</p>
+<p>不能删除其他的节。</p>
+<h4 id="VERSION">[#VERSION]<a class="headerlink" href="#VERSION" title="Permanent link">♬</a></h4>
+<p>是从UTAU0.4追加的节。</p>
+<p>仅在UTAU设定中“以旧形式条目输出UST文件和插件脚本”开启的情况下存在。</p>
+<p>截至目前只写作“UST Version 1.20”。</p>
+<h3 id="TiaoMu">条目<a class="headerlink" href="#TiaoMu" title="Permanent link">♬</a></h3>
+<p>条目在输出时可以省略，此时被UTAU侧解释为该条目内无变更。</p>
+<p>因此，无变更音符可只返回节头。</p>
+<p>在省略用<code class="highlight">[#INSERT]</code>插入的节的条目的情况下，UTAU本体会填入某些值。此值和作为音符默认设定的值不同。</p>
+<p>所谓条目的各说明中的“默认值”是使用<code class="highlight">[#INSERT]</code>节追加音符的情况下，不指定任何条目时填入的值。</p>
+<h4 id="YiDing-CunZai-De-TiaoMu">一定存在的条目<a class="headerlink" href="#YiDing-CunZai-De-TiaoMu" title="Permanent link">♬</a></h4>
+<h5 id="Length-YinFu-De-ChangDu"><code class="highlight">Length</code>　音符的长度<a class="headerlink" href="#Length-YinFu-De-ChangDu" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight">Length=整数</code></p>
+<p>定义域：1～7680</p>
+<p>单位：Ticks（四分音符=480）</p>
+<p>默认值：后一音符的<code class="highlight">Length</code>（若无则为0）</p>
+<p>即使指定超过上限的值，Ver0.2.76也能正常读取，但旧版本会存在音符不能够移动的情况。</p>
+<p>并且，用鼠标拖动的输入上限也是7680（下限是15）。</p>
+<h5 id="Lyric-Ci"><code class="highlight">Lyric</code>　词<a class="headerlink" href="#Lyric-Ci" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight">Lyric=字符串</code></p>
+<p>定义域：除例外的全部字符串</p>
+<p>默认值：后一音符的<code class="highlight">Lyric</code>（若无则为空白）</p>
+<p>作为例外，不能指定含有换行、节名、条目名+“=”的词。</p>
+<p>例如“あ[#INSERT]”、“あPreUtterance=”、“あ$foo=bar”这样的东西。</p>
+<p>不过，通过GUI侧的操作等已经变为那样的词时，只要插件侧不进行变更就保持原状。</p>
+<h5 id="NoteNum-YinJie-BianHao"><code class="highlight">NoteNum</code>　音阶编号<a class="headerlink" href="#NoteNum-YinJie-BianHao" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight">NoteNum=整数</code></p>
+<p>定义域：24～107</p>
+<p>单位：音符编号（与MIDI相同）</p>
+<p>默认值：后一音符的<code class="highlight">NoteNum</code>（若无则为24）</p>
+<p>从C1=24开始，每半音值上升一。</p>
+<p>若指定108(C8)以上，音符会变得无法表示在画面上。</p>
+<p>若指定120(C9)以上，音符属性会变得无法打开。</p>
+<p>若指定23以下，合成时出现错误。</p>
+<h5 id="PreUtterance-XianXing-FaSheng"><code class="highlight">PreUtterance</code>　先行发声<a class="headerlink" href="#PreUtterance-XianXing-FaSheng" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight">PreUtterance=实数</code></p>
+<p>定义域：不足60000</p>
+<p>单位：毫秒</p>
+<p>默认值：空白（原音值）</p>
+<p>条目本身一定存在，但值可以为空白。</p>
+<h4 id="You-KeNeng-Bei-ShengLve-De-TiaoMu">有可能被省略的条目<a class="headerlink" href="#You-KeNeng-Bei-ShengLve-De-TiaoMu" title="Permanent link">♬</a></h4>
+<p>与音调相关的条目和参数也可以省略，但因为有很多所以后述。</p>
+<h5 id="VoiceOverlap-ChongDie-BuFen"><code class="highlight">VoiceOverlap</code>　重叠部分<a class="headerlink" href="#VoiceOverlap-ChongDie-BuFen" title="Permanent link">♬</a></h5>
+<p>格式：VoiceOverlap=实数</p>
+<p>定义域：不足60000</p>
+<p>单位：毫秒</p>
+<p>默认值：空白（原音值）</p>
+<h5 id="Intensity-Yin-De-QiangDu">Intensity　音的强度<a class="headerlink" href="#Intensity-Yin-De-QiangDu" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight">Intensity=实数</code></p>
+<p>定义域：0～200</p>
+<p>默认值：空白（100）</p>
+<p>音量的峰值，200时为-0db，100时变成-6db附近。</p>
+<p>要贴合得严密到什么程度可通过P参数指定。</p>
+<h5 id="Moduration-YiDiao"><code class="highlight">Moduration</code>　移调<a class="headerlink" href="#Moduration-YiDiao" title="Permanent link">♬</a></h5>
+<p>格式1：<code class="highlight">Moduration=实数</code></p>
+<p>格式2：<code class="highlight">Modulation=实数</code></p>
+<p>定义域：-200～200</p>
+<p>单位：百分比</p>
+<p>默认值：空白（100）</p>
+<p>通过UTAU的版本和选项设定，Moduration、Modulation两种格式都能够得到。</p>
+<p>使用fresamp系引擎若指定为-101以下，生成的声音会变得很奇怪，请注意。</p>
+<h5 id="StartPoint-STP"><code class="highlight">StartPoint</code>　STP<a class="headerlink" href="#StartPoint-STP" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight">StartPoint=实数</code></p>
+<p>定义域：只要在原音范围内就没有限制？</p>
+<p>单位：毫秒</p>
+<p>默认值：空白（0）</p>
+<h5 id="Envelope-BaoLuo"><code class="highlight">Envelope</code>　包络<a class="headerlink" href="#Envelope-BaoLuo" title="Permanent link">♬</a></h5>
+<p>格式1：<code class="highlight">Envelope=p1,p2,p3,v1,v2,v3,v4</code></p>
+<p>格式2：<code class="highlight">Envelope=p1,p2,p3,v1,v2,v3,v4,%,p4</code></p>
+<p>格式2：<code class="highlight">Envelope=p1,p2,p3,v1,v2,v3,v4,,p4</code>（无“%”的状态为通过“母音结合”“交给☆我吧”母音结合的情况）</p>
+<p>格式3：<code class="highlight">Envelope=p1,p2,p3,v1,v2,v3,v4,%,p4,p5</code></p>
+<p>格式4：<code class="highlight">Envelope=p1,p2,p3,v1,v2,v3,v4,%,p4,p5,v5</code></p>
+<p>（无论哪种格式、p,v都是正整数）</p>
+<p>定义域：p在音符的范围内和其他的值不矛盾就没有限制？ v是0～200</p>
+<p>单位：p是毫秒，v是百分比</p>
+<p>默认值：0,5,35,0,100,100,0,%,0,10,100</p>
+<p>直到Ver0.2.35的版本中，只有格式1有效。</p>
+<p>并且，即使在Ver0.2.36以后的版本中指定格式1，也不再是和以前完全相同的行为。</p>
+<p>若使值变为空白则填入0。</p>
+<h5 id="Tempo-QuSu"><code class="highlight">Tempo</code>　曲速<a class="headerlink" href="#Tempo-QuSu" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight">Tempo=实数</code></p>
+<p>定义域：10～512</p>
+<p>单位：BPM(Beats Per Minute)</p>
+<p>默认值：[#SETTING]的Tempo</p>
+<p>设定此节以后的音符的曲速。</p>
+<h5 id="Velocity-ZiYin-SuDu"><code class="highlight">Velocity</code>　子音速度<a class="headerlink" href="#Velocity-ZiYin-SuDu" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight">Velocity=小数</code></p>
+<p>定义域：0～200</p>
+<p>默认值：空白（100）</p>
+<h5 id="Label-BiaoQian"><code class="highlight">Label</code>　标签<a class="headerlink" href="#Label-BiaoQian" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight">Label=字符串</code></p>
+<p>默认值：空白</p>
+<h5 id="direct-ZhiJie-ShuChu"><code class="highlight">$direct</code>　直接输出<a class="headerlink" href="#direct-ZhiJie-ShuChu" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight">$direct=布尔值</code></p>
+<p>定义域：True</p>
+<p>默认值：空白</p>
+<p>不经resampler（工具2）的加工输出。</p>
+<p>因为经过wavtool（工具1）的加工，包络、先行发声等会被反映。</p>
+<p>（实际的行为是记述不限于“True”的任何值都会直接输出。</p>
+<p>例如即使是<code class="highlight">$direct=False</code>或<code class="highlight">$direct=0</code>也会直接输出。在Ver.0.2.77上证实）</p>
+<h5 id="patch-wav-WenJian-ZhiJie-ShuChu"><code class="highlight">$patch</code>　wav文件直接输出<a class="headerlink" href="#patch-wav-WenJian-ZhiJie-ShuChu" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight">$patch=文件名</code></p>
+<p>定义域：指定对于与ust文件相同的文件夹的相对路径中的wav文件名</p>
+<p>默认值：空白</p>
+<p>不经resampler（工具2）的加工输出。</p>
+<p>因为经过wavtool（工具1）的加工，包络、先行发声等会被反映。</p>
+<p>wav文件不存在的情况下会变为与休止符同样对待。</p>
+<p>若文件名有半角的等号（=）或半角的逗号（,）则无法正常渲染，请注意。</p>
+<h5 id="region-XuanZe-FanWei-De-KaiShi"><code class="highlight"><span class="n">$region</span><span class="w"></span></code>　选择范围的开始<a class="headerlink" href="#region-XuanZe-FanWei-De-KaiShi" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight"><span class="n">$region</span><span class="o">=</span><span class="err">范围名</span><span class="o">|</span><span class="err">范围名</span><span class="o">|</span><span class="err">范围名…</span><span class="w"></span></code></p>
+<p>默认值：空白</p>
+<p>选择范围的开始重复的情况下，用<code class="highlight">|</code>分隔。</p>
+<p>一个ust内存在同一范围名的情况下，在前面存在的选择范围优先被选择。加工<code class="highlight"><span class="n">$region</span><span class="w"></span></code>时请勿重复范围名。</p>
+<h5 id="region-end-XuanZe-FanWei-De-ZhongZhi"><code class="highlight"><span class="n">$region_end</span><span class="w"></span></code>　选择范围的终止<a class="headerlink" href="#region-end-XuanZe-FanWei-De-ZhongZhi" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight"><span class="n">$region_end</span><span class="o">=</span><span class="err">范围名</span><span class="o">|</span><span class="err">范围名</span><span class="o">|</span><span class="err">范围名…</span><span class="w"></span></code></p>
+<p>默认值：空白</p>
+<p>选择范围的开始重复的情况下，用|分隔。</p>
+<p>一个ust内存在同一范围名的情况下，在前面存在的选择范围优先被选择。加工<code class="highlight"><span class="n">$region</span><span class="w"></span></code>时请勿重复范围名。</p>
+<h4 id="ZhiDu-TiaoMu">只读条目<a class="headerlink" href="#ZhiDu-TiaoMu" title="Permanent link">♬</a></h4>
+<p>即使替换也没有效果的只读条目。</p>
+<p>由于在Ver.0.4.15才被实装，在此前版本中不能使用。</p>
+<h5 id="preuttr-ZiDong-TiaoZheng-WanCheng-De-XianXing-FaSheng"><code class="highlight"><span class="nv">@preuttr</span><span class="w"></span></code>　自动调整完成的先行发声<a class="headerlink" href="#preuttr-ZiDong-TiaoZheng-WanCheng-De-XianXing-FaSheng" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight"><span class="nv">@preuttr</span><span class="o">=</span><span class="n">实数</span><span class="w"></span></code></p>
+<p>渲染时的自动调整完成的先行发声值。</p>
+<h5 id="overlap-ZiDong-TiaoZheng-WanCheng-De-ChongDie-BuFen"><code class="highlight"><span class="nv">@overlap</span><span class="w"></span></code>　自动调整完成的重叠部分<a class="headerlink" href="#overlap-ZiDong-TiaoZheng-WanCheng-De-ChongDie-BuFen" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight"><span class="nv">@overlap</span><span class="o">=</span><span class="n">实数</span><span class="w"></span></code></p>
+<p>渲染时的自动调整完成的重叠部分值。</p>
+<h5 id="stpoint-ZiDong-TiaoZheng-WanCheng-De-STP"><code class="highlight"><span class="nv">@stpoint</span><span class="w"></span></code>　自动调整完成的STP<a class="headerlink" href="#stpoint-ZiDong-TiaoZheng-WanCheng-De-STP" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight"><span class="nv">@stpoint</span><span class="o">=</span><span class="n">实数</span><span class="w"></span></code></p>
+<p>渲染时的自动调整完成的STP值。</p>
+<h5 id="filename-XuanRan-ShiYong-WenJianMing"><code class="highlight"><span class="nv">@filename</span><span class="w"></span></code>　渲染使用文件名<a class="headerlink" href="#filename-XuanRan-ShiYong-WenJianMing" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight"><span class="nv">@filename</span><span class="o">=</span><span class="n">文件名</span><span class="w"></span></code></p>
+<p>渲染中被使用的音源文件名。</p>
+<p>如果音频缺失，则不会显示。</p>
+<h5 id="alias-BieMing"><code class="highlight"><span class="nv">@alias</span><span class="w"></span></code>　别名<a class="headerlink" href="#alias-BieMing" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight"><span class="nv">@alias</span><span class="o">=</span><span class="n">别名</span><span class="w"></span></code></p>
+<p>Prefix.map适用完成的别名。若无则为向音符输入的歌词。</p>
+<p>如果音频缺失，则不会显示。</p>
+<h5 id="cache-HuanCun-WenJianMing"><code class="highlight"><span class="nv">@cache</span><span class="w"></span></code>　缓存文件名<a class="headerlink" href="#cache-HuanCun-WenJianMing" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight"><span class="nv">@cache</span><span class="o">=</span><span class="n">文件路径</span><span class="w"></span></code></p>
+<p>缓存文件名。不存在缓存的情况下不被表示。</p>
+<p>※在Ver.0.4.18中转移为绝对路径，似乎预定去除缓存路径。</p>
+<h4 id="YinDiao-MoShi-1">音调（模式1）<a class="headerlink" href="#YinDiao-MoShi-1" title="Permanent link">♬</a></h4>
+<h5 id="PBType-HuaYin-LeiXing"><code class="highlight">PBType</code>　滑音类型<a class="headerlink" href="#PBType-HuaYin-LeiXing" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight">PBType=值</code></p>
+<p>定义域：<code class="highlight"><span class="mf">5</span><span class="w"></span></code>或<code class="highlight">OldData</code></p>
+<p>默认值：<code class="highlight"><span class="mf">5</span><span class="w"></span></code></p>
+<p>通常请指定<code class="highlight"><span class="mf">5</span><span class="w"></span></code>。</p>
+<p><code class="highlight">OldData</code>是相当初期的UTAU中被使用过的滑音类型。</p>
+<h5 id="Piches-YinDiao-ShuLie"><code class="highlight">Piches</code>　音调数列<a class="headerlink" href="#Piches-YinDiao-ShuLie" title="Permanent link">♬</a></h5>
+<p>格式1：<code class="highlight">Piches=整数,整数,整数…</code></p>
+<p>格式2：<code class="highlight">Pitches=整数,整数,整数…</code></p>
+<p>格式3：<code class="highlight">PitchBend=整数,整数,整数…</code></p>
+<p>定义域：<code class="highlight">-2048</code>～<code class="highlight"><span class="mf">2047</span><span class="w"></span></code></p>
+<p>单位：音分</p>
+<p>默认值：<code class="highlight"><span class="mf">0</span><span class="w"></span></code></p>
+<p>以5ticks的步进表示音高。</p>
+<p>通过UTAU的版本和选项设定Piches、Pitches、PitchBend每种格式都能够得到。</p>
+<p>从插件侧输出哪种格式都没有变化。</p>
+<p>被省略的部分全部作为0被处理。</p>
+<p>音调数列的开始位置根据UTAU版本有所差异。Ver.0.2.76的情况下为从先行发声的位置被开始。Ver.0.4之后为从在<code class="highlight">PBStart</code>中被指定的位置被开始。</p>
+<h5 id="PBStart-YinDiao-ShuLie-KaiShi-WeiZhi"><code class="highlight">PBStart</code>　音调数列开始位置<a class="headerlink" href="#PBStart-YinDiao-ShuLie-KaiShi-WeiZhi" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight">PBStart=实数</code></p>
+<p>单位：毫秒</p>
+<p>默认值：<code class="highlight"><span class="mf">0</span><span class="w"></span></code></p>
+<p>是Ver.0.4以降之后被追加的条目，指示Mode1用音调数列的开始位置。比音符开头更先行的情况保存负的值。</p>
+<p>值不存在的情况下意义为0ms，但请注意旧版本中不存在<code class="highlight">PBStart</code>，永远从先行发声的位置被开始（在Ver.0.2.76证实）。</p>
+<p>※若<code class="highlight">[#VERSION]</code>节不存在且<code class="highlight">[#SETTING]</code>节中<code class="highlight">UstVersion</code>条目不存在则可判断为旧版本。</p>
+<h4 id="YinDiao-MoShi-2">音调（模式2）<a class="headerlink" href="#YinDiao-MoShi-2" title="Permanent link">♬</a></h4>
+<p>滑音点的上限为50。</p>
+<p>与此对应，也决定了<code class="highlight">PBW</code>、<code class="highlight">PBY</code>、<code class="highlight">PBM</code>值个数的上限。</p>
+<p>此部分条目的详情，由于从官方未能找到信息，为作者的完全推测。</p>
+<p>即使从Mode2回归到Mode1的情况下，这些条目的值也会被全部保存。</p>
+<p>只要渲染按钮没有被按下，Mode1的音调信息也不会改变。</p>
+<p>并且，这里的条目没有默认值。因为用<code class="highlight">[#INSERT]</code>插入的音符既没有滑音设定也没有颤音设定。</p>
+<h5 id="PBS-YinGao-QuXian-ZuiChu-Dian"><code class="highlight">PBS</code>　音高曲线最初点<a class="headerlink" href="#PBS-YinGao-QuXian-ZuiChu-Dian" title="Permanent link">♬</a></h5>
+<p>格式1：<code class="highlight">PBS=整数</code></p>
+<p>格式2：<code class="highlight">PBS=整数;实数</code></p>
+<p>定义域：<code class="highlight">-200</code>～<code class="highlight"><span class="mf">200</span><span class="w"></span></code>; <code class="highlight">-204.8</code>～<code class="highlight"><span class="mf">204.7</span><span class="w"></span></code></p>
+<p>单位：毫秒; 10音分</p>
+<p>最初的点为从音符开始点的相对坐标。</p>
+<p>第一个值为时间位置，第二个值代表音高点移动值。</p>
+<p>未指定音高点移动值的情况，会输入<code class="highlight"><span class="mf">0</span><span class="w"></span></code>。</p>
+<p>请注意分隔符为<code class="highlight">;</code>。</p>
+<h5 id="PBW-YinGao-Dian-JianGe"><code class="highlight">PBW</code>　音高点间隔<a class="headerlink" href="#PBW-YinGao-Dian-JianGe" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight">PBW=实数,实数,实数,…</code></p>
+<p>定义域：只要没有超过音符的终点就没有限制？</p>
+<p>单位：毫秒</p>
+<p>从最左端点的间隔值开始。</p>
+<h5 id="PBY-Chu-ZuiChu-DianWai-De-YinGao-Dian-YiDong-Zhi"><code class="highlight">PBY</code>　除最初点外的音高点移动值<a class="headerlink" href="#PBY-Chu-ZuiChu-DianWai-De-YinGao-Dian-YiDong-Zhi" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight">PBY=实数,实数,实数,…</code></p>
+<p>定义域：<code class="highlight">-204.8</code>～<code class="highlight"><span class="mf">204.7</span><span class="w"></span></code></p>
+<p>单位：10音分</p>
+<p>除最初点外的音高点移动值。</p>
+<p>被省略部分全部作为<code class="highlight"><span class="mf">0</span><span class="w"></span></code>被处理。</p>
+<p>从左边第二个点的值按顺序开始。</p>
+<p>除最初和最后两个以外没有点，或全部点的移动值为0的情况，有条目被省略的情况。</p>
+<h5 id="PBM-YinGao-QuXian-De-XingZhuang"><code class="highlight">PBM</code>　音高曲线的形状<a class="headerlink" href="#PBM-YinGao-QuXian-De-XingZhuang" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight">PBM=文字,文字,文字,…</code></p>
+<p>定义域：<code class="highlight">未指定</code>、<code class="highlight">s</code>、<code class="highlight">r</code>、<code class="highlight">j</code>中的任意一个</p>
+<p>从左按顺序指定各点间音高曲线的形状。</p>
+<p>曲线：<code class="highlight">未指定</code>　直线：<code class="highlight">s</code>　R型：<code class="highlight">r</code>　J型：<code class="highlight">j</code></p>
+<p>被省略的部分全部作为曲线被处理。</p>
+<p>全部为曲线的情况，有条目被省略的情况。</p>
+<h5 id="VBR-ChanYin"><code class="highlight">VBR</code>　颤音<a class="headerlink" href="#VBR-ChanYin" title="Permanent link">♬</a></h5>
+<p>格式：<code class="highlight">VBR=实数,实数,实数,实数,实数,实数,实数,任意</code></p>
+<p>定义域：<code class="highlight"><span class="mf">0</span><span class="w"></span></code>～<code class="highlight"><span class="mf">100</span><span class="w"></span></code>, <code class="highlight"><span class="mf">64</span><span class="w"></span></code>～<code class="highlight"><span class="mf">512</span><span class="w"></span></code>, <code class="highlight"><span class="mf">5</span><span class="w"></span></code>～<code class="highlight"><span class="mf">200</span><span class="w"></span></code>, <code class="highlight"><span class="mf">0</span><span class="w"></span></code>～<code class="highlight"><span class="mf">100</span><span class="w"></span></code>, <code class="highlight"><span class="mf">0</span><span class="w"></span></code>～<code class="highlight"><span class="mf">100</span><span class="w"></span></code>, <code class="highlight"><span class="mf">0</span><span class="w"></span></code>～<code class="highlight"><span class="mf">100</span><span class="w"></span></code>, <code class="highlight"><span class="mf">0</span><span class="w"></span></code>～<code class="highlight"><span class="mf">100</span><span class="w"></span></code>, 任意</p>
+<p>单位：百分比、毫秒、音分、百分比、百分比、百分比、百分比、无</p>
+<p>相对于<code class="highlight">Length</code>的长度、周期、深度、入、出、相位、高度、未使用</p>
+<p>以上述顺序被容纳。</p>
+<p>通过直接变更音符的属性，有输入超出上述定义域的值的情况。</p>
+<h4 id="Flags">Flags<a class="headerlink" href="#Flags" title="Permanent link">♬</a></h4>
+<p>属性的flags+BRE+无共振峰滤波器</p>
+<p>格式：<code class="highlight">Flags=文字列</code></p>
+<p>默认值：空白</p>
+<p>在以下所记录的Flag中，含有官方未宣布的内容。</p>
+<p>Flag各种各样的效果的说明，请参照音符的属性。</p>
+<p>指定数字的一并记录有定义域。</p>
+<p>全部为字母表顺序。</p>
+<h5 id="b-Bu-TongGuo-GongZhen-Feng-XiuZheng-De-BRE"><code class="highlight">b</code>　不通过共振峰修正的BRE<a class="headerlink" href="#b-Bu-TongGuo-GongZhen-Feng-XiuZheng-De-BRE" title="Permanent link">♬</a></h5>
+<p>定义域：<code class="highlight"><span class="mf">0</span><span class="w"></span></code>～<code class="highlight"><span class="mf">100</span><span class="w"></span></code></p>
+<p>默认值：<code class="highlight"><span class="mf">0</span><span class="w"></span></code></p>
+<h5 id="B-BRE"><code class="highlight">B</code>　BRE<a class="headerlink" href="#B-BRE" title="Permanent link">♬</a></h5>
+<p>定义域：<code class="highlight"><span class="mf">0</span><span class="w"></span></code>～<code class="highlight"><span class="mf">100</span><span class="w"></span></code></p>
+<p>默认值：<code class="highlight"><span class="mf">50</span><span class="w"></span></code></p>
+<h5 id="c-DiTongLvBoQi-GongZhen-Feng-XiuZheng-Qian-"><code class="highlight">c</code>　低通滤波器（共振峰修正前）<a class="headerlink" href="#c-DiTongLvBoQi-GongZhen-Feng-XiuZheng-Qian-" title="Permanent link">♬</a></h5>
+<p>定义域：<code class="highlight"><span class="mf">0</span><span class="w"></span></code>～<code class="highlight"><span class="mf">100</span><span class="w"></span></code></p>
+<p>默认值：<code class="highlight"><span class="mf">50</span><span class="w"></span></code></p>
+<h5 id="C-DiTongLvBoQi-1"><code class="highlight">C</code>　低通滤波器1<a class="headerlink" href="#C-DiTongLvBoQi-1" title="Permanent link">♬</a></h5>
+<p>定义域：<code class="highlight"><span class="mf">0</span><span class="w"></span></code>～<code class="highlight"><span class="mf">100</span><span class="w"></span></code></p>
+<p>默认值：<code class="highlight"><span class="mf">0</span><span class="w"></span></code></p>
+<h5 id="D-DiTongLvBoQi-2"><code class="highlight">D</code>　低通滤波器2<a class="headerlink" href="#D-DiTongLvBoQi-2" title="Permanent link">♬</a></h5>
+<p>定义域：<code class="highlight"><span class="mf">0</span><span class="w"></span></code>～<code class="highlight"><span class="mf">100</span><span class="w"></span></code></p>
+<p>默认值：<code class="highlight"><span class="mf">0</span><span class="w"></span></code></p>
+<h5 id="E-DiTongLvBoQi-3"><code class="highlight">E</code>　低通滤波器3<a class="headerlink" href="#E-DiTongLvBoQi-3" title="Permanent link">♬</a></h5>
+<p>定义域：<code class="highlight"><span class="mf">0</span><span class="w"></span></code>～<code class="highlight"><span class="mf">100</span><span class="w"></span></code></p>
+<p>默认值：<code class="highlight"><span class="mf">0</span><span class="w"></span></code></p>
+<h5 id="F-GongZhen-Feng-XiuZheng-ShiYong-PinLv-FanWei-YinGao-JiZhun-"><code class="highlight">F</code>　共振峰修正适用频率范围（音高基准）<a class="headerlink" href="#F-GongZhen-Feng-XiuZheng-ShiYong-PinLv-FanWei-YinGao-JiZhun-" title="Permanent link">♬</a></h5>
+<p>定义域：<code class="highlight"><span class="mf">0</span><span class="w"></span></code>～不明</p>
+<p>默认值：<code class="highlight"><span class="mf">3</span><span class="w"></span></code></p>
+<h5 id="g-JianYi-XingBie-CanShu"><code class="highlight">g</code>　简易性别参数<a class="headerlink" href="#g-JianYi-XingBie-CanShu" title="Permanent link">♬</a></h5>
+<p>定义域：<code class="highlight">-100</code>～<code class="highlight"><span class="mf">100</span><span class="w"></span></code></p>
+<p>默认值：<code class="highlight"><span class="mf">0</span><span class="w"></span></code></p>
+<h5 id="G-PinLv-BiaoZai-ShengCheng"><code class="highlight">G</code>　频率表再生成<a class="headerlink" href="#G-PinLv-BiaoZai-ShengCheng" title="Permanent link">♬</a></h5>
+<p>默认值：未指定</p>
+<p>不指定数字。</p>
+<h5 id="h-DiTongLvBoQi-4-BRE-YiWai-"><code class="highlight">h</code>　低通滤波器4（BRE以外）<a class="headerlink" href="#h-DiTongLvBoQi-4-BRE-YiWai-" title="Permanent link">♬</a></h5>
+<p>定义域：<code class="highlight"><span class="mf">0</span><span class="w"></span></code>～<code class="highlight"><span class="mf">99</span><span class="w"></span></code></p>
+<p>默认值：<code class="highlight"><span class="mf">0</span><span class="w"></span></code></p>
+<p>即使变为100以上，如果<code class="highlight">BRE</code>为1以上仍会出声。</p>
+<h5 id="H-DiTongLvBoQi-4"><code class="highlight">H</code>　低通滤波器4<a class="headerlink" href="#H-DiTongLvBoQi-4" title="Permanent link">♬</a></h5>
+<p>定义域：<code class="highlight"><span class="mf">0</span><span class="w"></span></code>～<code class="highlight"><span class="mf">99</span><span class="w"></span></code></p>
+<p>默认值：<code class="highlight"><span class="mf">0</span><span class="w"></span></code></p>
+<h5 id="L-GongZhen-Feng-XiuZheng-ShiYong-PinLv-FanWei-PinLv-JiZhun-"><code class="highlight">L</code>　共振峰修正适用频率范围（频率基准）<a class="headerlink" href="#L-GongZhen-Feng-XiuZheng-ShiYong-PinLv-FanWei-PinLv-JiZhun-" title="Permanent link">♬</a></h5>
+<p>定义域：<code class="highlight"><span class="mf">0</span><span class="w"></span></code>～不明（好像是130以下）</p>
+<p>默认值：无</p>
+<h5 id="N-Wu-GongZhen-Feng-LvBoQi"><code class="highlight">N</code>　无共振峰滤波器<a class="headerlink" href="#N-Wu-GongZhen-Feng-LvBoQi" title="Permanent link">♬</a></h5>
+<p>默认值：未指定</p>
+<p>不指定数字。</p>
+<h5 id="P-BoFeng-YaSuoQi-QiangDu"><code class="highlight">P</code>　波峰压缩器强度<a class="headerlink" href="#P-BoFeng-YaSuoQi-QiangDu" title="Permanent link">♬</a></h5>
+<p>定义域：<code class="highlight"><span class="mf">0</span><span class="w"></span></code>～<code class="highlight"><span class="mf">100</span><span class="w"></span></code></p>
+<p>默认值：<code class="highlight"><span class="mf">86</span><span class="w"></span></code></p>
+<h5 id="R-TIPS-YinQing-Yong-CanShu-WenJian-Zai-ShengCheng"><code class="highlight">R</code>　TIPS引擎用参数文件再生成<a class="headerlink" href="#R-TIPS-YinQing-Yong-CanShu-WenJian-Zai-ShengCheng" title="Permanent link">♬</a></h5>
+<p>默认值：未指定</p>
+<p>不指定数字。</p>
+<h5 id="t-Yi-10-Yin-FenWei-DanWei-YiDong-YinCheng"><code class="highlight">t</code>　以10音分为单位移动音程<a class="headerlink" href="#t-Yi-10-Yin-FenWei-DanWei-YiDong-YinCheng" title="Permanent link">♬</a></h5>
+<p>定义域：不明</p>
+<p>默认值：<code class="highlight"><span class="mf">0</span><span class="w"></span></code></p>
+<h5 id="T-Yi-WenBen-ShuChu-PinLv-Biao"><code class="highlight">T</code>　以文本输出频率表<a class="headerlink" href="#T-Yi-WenBen-ShuChu-PinLv-Biao" title="Permanent link">♬</a></h5>
+<p>默认值：未指定</p>
+<p>不指定数字。</p>
+<h5 id="W-JiQiRen-Sheng-ShengCheng"><code class="highlight">W</code>　机器人声生成<a class="headerlink" href="#W-JiQiRen-Sheng-ShengCheng" title="Permanent link">♬</a></h5>
+<p>默认值：未指定</p>
+<p>不指定数字。</p>
+<p>好像是官方还没有宣布的Flag。</p>
+<h5 id="Y-ShenSuo-FanWei-De-BRE-BiLi"><code class="highlight">Y</code>　伸缩范围的BRE比例<a class="headerlink" href="#Y-ShenSuo-FanWei-De-BRE-BiLi" title="Permanent link">♬</a></h5>
+<p>定义域：<code class="highlight"><span class="mf">0</span><span class="w"></span></code>～<code class="highlight"><span class="mf">100</span><span class="w"></span></code></p>
+<p>默认值：<code class="highlight"><span class="mf">100</span><span class="w"></span></code></p>
+<h5 id="-QieHuan-Wei-GaoSuHua-PiChuLi-Yong-YinQing"><code class="highlight">/</code>　切换为高速化批处理用引擎<a class="headerlink" href="#-QieHuan-Wei-GaoSuHua-PiChuLi-Yong-YinQing" title="Permanent link">♬</a></h5>
+<p>高速化批处理时被使用记号的默认。</p>
+<p>大概可以变更。</p>
+<h4 id="ZiDingYi-TiaoMu">自定义条目<a class="headerlink" href="#ZiDingYi-TiaoMu" title="Permanent link">♬</a></h4>
+<p>格式：<code class="highlight">$条目名=值</code></p>
+<p>用户可以定义自定义条目。</p>
+<p>如果在节内按格式记述，则在<code class="highlight">Others</code>中反映。</p>
+<p>格式开头的一字符的<code class="highlight"><span class="p">$</span><span class="w"></span></code>必须为半角。</p>
+<p>条目名只要不含换行、半角空格、半角的/即自由。</p>
+<p>值如果含有半角的“<code class="highlight">=</code>”（等号）或半角的“<code class="highlight">\n</code>”（反斜杠+小写英文字母的n），在此以后的字符串会缺失。并且，半角空格被替换为半角逗号。除此以外没有限制。</p>
+<p>例：<code class="highlight">$你=其实，是个傻逼啊</code></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2022-05-18T00:55:50+00:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2022-05-18</span>
+      
+    
+  </small>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            隋卞 et al.，在<a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode.zh-Hans" target="_blank">知识共享许可协议—署名—相同方式共享 4.0 协议国际版</a>下发布
+          </div>
+        
+        使用
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+	部署
+      </div>
+      <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/SuibianP" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://qm.qq.com/cgi-bin/qm/qr?k=mJazCWZGab4flBhFeyEGVCwi6fD0eZMh&noverify=0" target="_blank" rel="noopener" title="qm.qq.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M433.754 420.445c-11.526 1.393-44.86-52.741-44.86-52.741 0 31.345-16.136 72.247-51.051 101.786 16.842 5.192 54.843 19.167 45.803 34.421-7.316 12.343-125.51 7.881-159.632 4.037-34.122 3.844-152.316 8.306-159.632-4.037-9.045-15.25 28.918-29.214 45.783-34.415-34.92-29.539-51.059-70.445-51.059-101.792 0 0-33.334 54.134-44.859 52.741-5.37-.65-12.424-29.644 9.347-99.704 10.261-33.024 21.995-60.478 40.144-105.779C60.683 98.063 108.982.006 224 0c113.737.006 163.156 96.133 160.264 214.963 18.118 45.223 29.912 72.85 40.144 105.778 21.768 70.06 14.716 99.053 9.346 99.704z"/></svg>
+    </a>
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs", "navigation.instant", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  </body>
+</html>
