@@ -19,3 +19,5 @@
 [UTAU渲染脚本](docs/UTAU-batchfile-analyze/UTAU-batchfile-analyze.md)
 
 [论UTAU设计之烂](docs/fuck-utau/fuck-utau.md)
+
+[UTAU Pitch字符串解码](docs/utau_pitch_string/utau-pitch-analysis.md)
