@@ -37,8 +37,8 @@ https://www.mediafire.com/file/7kr8yckc2a9rz44/
 这个重采样器也是高度实验性的，不一定每次都会有很好的效果。
 下面是一些可以帮助提升效果的flags。
 
-**-- flags --**
-因为young3相当于tn_fnds的修改版，所以它接受左右tn_fnds的flags。
+**-- flags --**  
+因为young3相当于tn_fnds的修改版，所以它接受所有tn_fnds的flags。
 一个值得注意的flag是可以把循环音频改为拉伸音频的 `e` flag。
 
 > `M` flag (旧版)
