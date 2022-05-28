@@ -21,3 +21,5 @@
 [论UTAU设计之烂](docs/fuck-utau/fuck-utau.md)
 
 [UTAU Pitch字符串解码](docs/utau_pitch_string/utau-pitch-analysis.md)
+
+[young3重采样器文档](docs/young3_doc/young3_doc.md)
