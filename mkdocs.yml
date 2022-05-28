@@ -19,6 +19,7 @@ nav:
                 - 'docs/UTAU-batchfile-analyze/UTAU-batchfile-analyze.md'
                 - 'docs/fuck-utau/fuck-utau.md'
                 - 'docs/utau_pitch_string/utau-pitch-analysis.md'
+                - 'docs/young3_doc/young3_doc.md'
 
 theme:
         name: 'material'
